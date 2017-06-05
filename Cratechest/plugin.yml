@@ -1,0 +1,7 @@
+name: MysteryCrate
+main: MysteryCrates\Main
+api:
+- 3.0.0-ALPHA5
+version: 3.1
+authors: ["ImagicalGamer", "iPeedro", "Day", "ID", "jasonwynn10"]
+depend: EconomyAPI

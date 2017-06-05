@@ -1,0 +1,30 @@
+name: BuildZone
+author: "jasonwynn10"
+version: 1.0.7
+main: jasonwynn10\Main
+api: [1.13.1, 2.0.0]
+description: "World Protection at it's finest!"
+website: "https://github.com/jasonwynn10/BuildZone"
+commands:
+    buildzone:
+        description: "Allows you to manage zones"
+        usage: "/buildzone <pos1/pos2/create/list>"
+        permission: area.cmd
+    bz:
+        description: "Allows you to manage zones"
+        usage: "/bz <pos1/pos2/create/list>"
+        permission: area.cmd
+permissions:
+    area.cmd:
+        default: op
+        children:
+            area.cmd.pos1:
+                default: op
+            area.cmd.pos2:
+                default: op
+            area.cmd.create:
+                default: op
+            area.cmd.delete:
+                default: op
+    act.bypass:
+        default: op

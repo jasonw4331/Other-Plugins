@@ -1,0 +1,8 @@
+name: WorldEdit
+author: "GiantAmethyst"
+website: "http://twitter.com/GiantAmethyst"
+main: WorldEdit\WorldEdit
+description: "An in-game world editor for PMMP PocketMine-MP"
+version: 0.1.0
+api: [2.0.0, 2.1.0, 3.0.0-ALPHA4, 3.0.0-ALPHA5]
+load: POSTWORLD

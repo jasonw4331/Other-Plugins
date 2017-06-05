@@ -1,0 +1,2 @@
+# WorldShift [![Poggit-CI](https://poggit.pmmp.io/ci.badge/jasonwynn10/WorldShift/WorldShift)](https://poggit.pmmp.io/ci/jasonwynn10/WorldShift/WorldShift)
+A plugin that allows players to move between worlds with a command

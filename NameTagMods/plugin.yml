@@ -1,0 +1,69 @@
+name: NameTagMods
+author: "jasonwynn10"
+version: 0.1.0
+api:
+- 3.0.0-ALPHA4
+- 3.0.0-ALPHA5
+main: jasonwynn10\Main
+description: "A plugin that allows players to add things onto their nametags"
+depend: PureChat
+commands:
+  addprefix:
+    usage: "/addprefix [prefix]"
+    permission: EditTag.prefix.add
+    description: ""
+  addsuffix:
+    usage: "/addsuffix [suffix]"
+    permission: EditTag.suffix.add
+    description: ""
+  delprefix:
+    usage: "/delprefix [player]"
+    permission: EditTag.prefix.delete
+    description: ""
+  delsuffix:
+    usage: "/delsuffix [player]"
+    permission: EditTag.suffix.delete
+    description: ""
+  giveprefix:
+    usage: "/giveprefix <player> [prefix]"
+    permission: EditTag.other.prefix.add
+    description: ""
+  givesuffix:
+    usage: "/givesuffix <player> [suffix]"
+    permission: EditTag.other.suffix.add
+    description: ""
+permissions:
+  EditTag:
+    default:
+    children:
+      EditTag.prefix:
+        default: true
+        children:
+          EditTag.prefix.add:
+            default: true
+          EditTag.prefix.remove:
+            default: true
+      EditTag.suffix:
+        default: true
+        children:
+          EditTag.suffix.add:
+            default: true
+          EditTag.suffix.remove:
+            default: true
+      EditTag.other:
+        default: true
+        children:
+          EditTag.other.prefix:
+            default: true
+            children:
+              EditTag.other.prefix.add:
+                default: true
+              EditTag.other.prefix.remove:
+                default: true
+          EditTag.other.suffix:
+            default: true
+            children:
+              EditTag.other.suffix.add:
+                default: true
+              EditTag.other.suffix.remove:
+                default: true

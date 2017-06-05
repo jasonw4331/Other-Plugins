@@ -1,0 +1,66 @@
+# An clean port of ViperKits to PocketMine-MP
+once-per-life: true
+    # Whether or not players can only use kits once per life
+list-format: "%s: %s%s"
+    # Kit display format when listing kits
+    # If you don't understand it don't change it
+show-kit-info-on-respawn: true
+    # Whether or not kit information is shown on respawn
+    # NOT implemented yet
+econ-prefix: $
+    # Economy prefix for price display
+sign-trigger: "[Kits]"
+    # Signs will be treated as kit signs if this is on the first line
+    # Changing it may cause some issues
+preferred-economy: false
+    # If you have multiple economies set the one you want here, set to false to just auto-detect
+    # You can set an economy of your own provided that class loads before ViperKits
+    # ViperKits\\economy\\Economy and ViperKits\\economy\\PocketMoney are built in
+kits:
+  archer:
+    commands:  # Executed on kit give
+      - 'tell {player} Enjoy your kit :)'
+    on-give-message: "You're now an archer" #Message displayed when kit is delivered
+    items: # Items auto-equipped and what fills each slot
+      helmet: '298'
+      chestplate: '299'
+      leggings: '300'
+      boots: '301'
+      '0': '261'
+      '1': '282'
+      '2': '282'
+      '3': '282'
+      '4': '282'
+      '5': '282'
+      '6': '282'
+      '7': '282'
+      '8': '282'
+      '9': '0'
+      '10': '0'
+      '11': '0'
+      '12': '0'
+      '13': '0'
+      '14': '0'
+      '15': '0'
+      '16': '262:64'
+      '17': '262:64'
+      '18': '0'
+      '19': '0'
+      '20': '0'
+      '21': '0'
+      '22': '0'
+      '23': '0'
+      '24': '0'
+      '25': '0'
+      '26': '0'
+      '27': '282'
+      '28': '282'
+      '29': '282'
+      '30': '282'
+      '31': '282'
+      '32': '282'
+      '33': '282'
+      '34': '282'
+      '35': '282'
+    effects:
+      

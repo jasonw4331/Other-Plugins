@@ -1,0 +1,32 @@
+name: WorldMerge
+author: "jasonwynn10"
+version: 0.1.0
+api:
+- 3.0.0-ALPHA2
+main: jasonwynn10\Main
+description: "This plugin allows copying chunks across worlds"
+commands:
+  chunk1:
+    usage: "/chunk1"
+    permission: copy.set
+    description: "sets the first chunk to use"
+  chunk2:
+    usage: "/chunk2"
+    permission: copy.set
+    description: "sets the second chunk to use"
+  copy:
+    usage: "/copy"
+    permission: copy
+    descrition: "copies all chunk data between set places"
+  paste:
+    usage: "/paste"
+    permission: paste
+    description: "pastes all chunks with data in chunks near the player"
+permissions:
+  copy:
+    default: op
+    children:
+      copy.set:
+        default: op
+  paste:
+    default: op

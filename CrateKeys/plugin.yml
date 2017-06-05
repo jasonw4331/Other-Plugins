@@ -1,0 +1,22 @@
+name: CrateKeys
+authors: ["Primus","jasonwynn10"]
+api: [1.12.0, 2.0.0, 3.0.0-ALPHA3]
+description: "A CrateKeys plugin for PocketMine-MP servers!"
+main: Primus\CrateKeys\Main
+version: 1.0.2
+
+permissions:
+ cratekeys.*:
+  default: true
+  description: "Permission for all features on CrateKeys"
+  child:
+   cratekeys.recieve:
+    description: "Allow to receive keys while mining"
+    default: true
+   cratekeys.use:
+    description: "Allow to use Crate Keys"
+    default: true
+   cratekeys.chest.create:
+    description: "Allow to create Chest Crate"
+    default: true
+    

@@ -1,0 +1,90 @@
+name: MoreCommands
+main: GlaciercreepsMC\morecommands\MoreCommands
+version: 1.1.5
+api:
+- 1.0.0
+- 2.0.0
+- 2.1.0
+- 3.0.0-ALPHA1
+- 3.0.0-ALPHA2
+- 3.0.0-ALPHA3
+- 3.0.0-ALPHA4
+- 3.0.0-ALPHA5
+description: Adds more commands for moderators and admins
+commands:
+    gms:
+        usage: /gms
+        description: Changes gamemode to survival
+        permission: morecommands.gms
+    gmc:
+        usage: /gmc
+        description: Changes gamemode to creative
+        permission: morecommands.gmc
+    gma:
+        usage: /gma
+        description: Changes gamemode to adventure
+        permission: morecommands.gma
+    gmspc:
+        usage: /gmspc
+        description: Changes gamemode to spectator
+        permission: morecommands.gmspc
+    slay:
+        usage: /slay <player>
+        description: Slays the specified player
+        permission: morecommands.slay
+    heal:
+        usage: /heal [player]
+        description: Heals you or a specified player
+        permission: morecommands.heal
+    last:
+        usage: /last [count] or /last history
+        description: Repeats last command. If count (a number) is supplied, it repeats the nth last command
+        permission: morecommands.last
+    uuid:
+        usage: /uuid
+        description: Shows your uuid and id
+        permission: morecommands.uuid
+    freeze:
+        usage: /freeze <player>
+        description: Freezes the specified player
+        permission: morecommands.freeze
+    mute:
+        usage: /mute <player>
+        description:
+        permission: morecommands.mute
+    unmute:
+        usage: /unmute <player>
+        description:
+        permission: morecommands.unmute
+        
+permissions:
+    morecommands.heal:
+        default: op
+        description: Allows you to heal yourself or others
+    morecommands.gmc:
+        default: op
+        description: Lets you use /gmc
+    morecommands.gms:
+        default: op
+        description: Lets you use /gms
+    morecommands.gma:
+        default: op
+        description: Lets you use /gma
+    morecommands.gmspc:
+        default: op
+        description: Lets you use /gmspc
+    morecommands.slay:
+        default: op
+        description: Lets you /slay others
+    morecommands.uuid:
+        default: op
+        description: Lets you look at your uuid and entity id
+    morecommands.freeze:
+        default: op
+        description: Lets you /freeze others
+    morecommands.mute:
+        default: op
+        description: Lets you /mute others
+    morecommands.unmute:
+        default: op
+        description: Lets you /unmute others

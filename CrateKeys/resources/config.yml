@@ -1,0 +1,134 @@
+---
+# Particle Scale Level
+particle-scale: 8
+# Enable player Crate Key Recieve SmokeParticle spawned in source block pos
+enable-key-recieve-particle: true
+# Enable player Crate Key Use SmokeParticle spawned in opened chest pos
+enable-key-use-particle: true
+# Enable player Crate Chest Create SmokeParticle spawned in placed chest pos
+enable-chest-create-particle: true
+# When cheat will be placed above pattern block it will send message to player
+inform-about-crate-chest-build: true
+# Broadcast message when player found Crate Key
+broadcast-message-on-key-recieve: true
+# Name will be used when player holds key
+# Enable or Disable option below
+enable-custom-key-name: true
+key-popup: "Crate Key"
+# Allow use non empty chests?
+allow-occupied-chests: false
+# Prefix for all messages that this plugin sends
+prefix: "§f[§2CrateKeys§f]"
+# Chance to find key in source blocks. Prefer to use 'tiny'
+# tiny, small, normal, big, sure.
+chance: normal
+# Blocks where keys can be found
+# Preffer not to use ores due to it can be mined more then once
+source-blocks:
+- 1
+- 13
+- 14
+- 15
+- 16
+- 21
+- 73
+# Block what should be below chest to be opened with key
+pattern-block-id: 49
+# Key id
+key-id: 341
+# Possible items that can be found in chest if opened with key
+# Format - ID:DAMAGE:COUNT
+possible-items:
+ - '3:0:4'
+ - '4:0:18'
+ - '4:0:12'
+ - '4:0:32'
+ - '264:0:3'
+ - '264:0:2'
+ - '264:0:1'
+ - '261:0:1'
+ - '262:0:6'
+ - '262:0:9'
+ - '1:1:3'
+ - '1:1:14'
+ -  '1:3:4'
+ - '1:3:9'
+ - '1:4:8'
+ - '1:4:19'
+ - '2:0:2'
+ - '5:0:32'
+ - '5:0:26'
+ - '5:0:22'
+ - '6:1:1'
+ - '6:2:1'
+ - '6:3:1'
+ - '12:0:8'
+ - '12:0:5'
+ - '17:0:5'
+ - '17:0:8'
+ - '19:0:1'
+ - '20:0:11'
+ - '24:0:33'
+ - '35:0:6'
+ - '41:0:1'
+ - '46:0:1'
+ - '49:0:3'
+ - '50:0:12'
+ - '54:0:1'
+ - '81:0:1'
+ - '80:0:4'
+ - '79:0:2'
+ - '82:0:11'
+ - '87:0:13'
+ - '87:0:23'
+ - '89:0:5'
+ - '103:0:4'
+ - '112:0:17'
+ - '141:0:2'
+ - '393:0:2'
+ - '400:0:1'
+ - '142:0:7'
+ - '259:0:1'
+ - '260:0:15'
+ - '263:0:54'
+ - '265:0:7'
+ - '266:0:4'
+ - '267:0:1'
+ - '268:0:1'
+ - '274:0:1'
+ - '279:0:1'
+ - '284:0:1'
+ - '280:0:8'
+ - '288:0:5'
+ - '289:0:6'
+ - '295:0:22'
+ - '296:0:5'
+ - '297:0:4'
+ - '298:0:1'
+ - '299:0:1'
+ - '300:0:1'
+ - '301:0:1'
+ - '302:0:2'
+ - '302:0:1'
+ - '303:0:1'
+ - '309:0:1'
+ - '308:0:1'
+ - '315:0:1'
+ - '318:0:3'
+ - '320:0:1'
+ - '325:1:1'
+ - '325:8:1'
+ - '329:0:1'
+ - '330:0:1'
+ - '331:0:8'
+ - '332:0:17'
+ - '333:0:1'
+ - '334:0:9'
+ - '334:0:3'
+ - '352:0:4'
+ - '406:0:15'
+# Filtering level (greater = smaller chance for item to get put into chest)
+filtering-level: 3
+# Do Not Change This!
+version: 1.0.0
+...

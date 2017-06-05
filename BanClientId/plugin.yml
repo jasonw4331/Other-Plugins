@@ -1,0 +1,21 @@
+name: BanClientId
+author: "jasonwynn10"
+version: 0.1.0
+api:
+- 3.0.0-ALPHA4
+- 3.0.0-ALPHA5
+main: jasonwynn10\Main
+description: "A plugin that allows banning client Ids"
+commands:
+  bancid:
+    usage: "/bancid <player>"
+    permission: pocketmine.command.ban 
+    description: "This command bans a player's client through their name"
+  unbancid:
+    usage: "/unbancid <player|id>"
+    permission: pocketmine.command.unban
+    description: "This command bans a player's client through their name"
+  timebancid:
+    usage: "/timebancid <player> <minutes>"
+    permission: pocketmine.command.ban
+    description: "This command bans a player's client through their name for a set time"

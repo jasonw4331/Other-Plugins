@@ -1,0 +1,31 @@
+name: BasketBall
+author: "jasonwynn10"
+version: 0.1.3
+api:
+- 2.1.0
+- 3.0.0-ALPHA4
+- 3.0.0-ALPHA5
+main: LostTeam\BBall
+description: "PocketMine-MP B-Ball Mini-game Plugin"
+commands:
+  makecourt:
+    usage: "/makecourt"
+    description: "Basic Plugin Command"
+    permission: court.cmd
+  bball:
+    usage: "/bball"
+    description: "Join the BasketBall Game Queue"
+    permission: join.game.play
+permissions:
+  court.cmd:
+    default: true
+    children:
+      court.cmd.set:
+        default: op
+  game.play:
+    default: true
+    children:
+      game.play.join:
+        default: true
+      game.play.leave:
+        default: true

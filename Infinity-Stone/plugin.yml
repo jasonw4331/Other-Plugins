@@ -1,0 +1,14 @@
+name: InfinityStone
+author: "jasonwynn10"
+version: 0.1.0
+api: [2.0.0, 1.13.1]
+main: jasonwynn10\Main
+description: "The stone that will never break"
+commands:
+  infinity:
+    usage: "/infinity"
+    permission: infinity.cmd 
+    description: "makes the next stone block mined by that player immortal"
+permissions:
+  infinity.cmd:
+    default: op

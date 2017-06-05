@@ -1,0 +1,17 @@
+name: Sleep4All
+description: "One player sleeps for all players!"
+author: "jasonwynn10"
+version: 0.1.3
+api:
+- 1.13.1
+- 2.0.0
+- 2.1.0
+- 3.0.0-ALPHA1
+- 3.0.0-ALPHA2
+- 3.0.0-ALPHA3
+- 3.0.0-ALPHA4
+- 3.0.0-ALPHA5
+main: sleep\Main
+permissions:
+    sleep.timechange:
+        default: true

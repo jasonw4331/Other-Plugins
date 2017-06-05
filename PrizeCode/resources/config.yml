@@ -1,0 +1,12 @@
+# The code to be entered
+# NOTE: this is CaSe Sensitive
+CodeName: "Name"
+# The list of items the player will be given
+# The setup is item:metadata:count:name
+Prizes:
+  - "276:0:1:Special Sword"
+  - "310:0:1"
+  - "311:0:1"
+  - "312:0:1"
+  - "313:0:1"
+  - "360:0:64"

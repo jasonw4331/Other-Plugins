@@ -1,0 +1,28 @@
+name: PeacefulSpawn
+main: LDX\PeacefulSpawn\Main
+version: 2.5
+api:
+- 1.0.0
+- 2.0.0
+- 2.1.0
+- 3.0.0-ALPHA1
+- 3.0.0-ALPHA2
+- 3.0.0-ALPHA3
+- 3.0.0-ALPHA4
+- 3.0.0-ALPHA5
+load: POSTWORLD
+author: "LDX"
+website: "https://github.com/LDX-MCPE/PeacefulSpawn"
+commands:
+  ps:
+    description: Toggles PeacefulSpawn's protection
+    usage: "/ps"
+    permission: peacefulspawn.toggle
+permissions:
+  peacefulspawn:
+    description: "Allows access to all PeacefulSpawn features."
+    default: op
+    children:
+      peacefulspawn.toggle:
+        description: "Allows the user to toggle spawn protection."
+        default: op

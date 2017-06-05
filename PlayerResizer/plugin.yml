@@ -1,0 +1,16 @@
+name: PlayerResizer
+main: sizer\Main
+version: 0.1.0
+author: "jasonwynn10"
+api:
+- 3.0.0-ALPHA4
+- 3.0.0-ALPHA5
+load: STARTUP
+permissions:
+  resize:
+    default: op
+    children:
+      resize.use:
+        default: op
+      resize.other:
+        default: op

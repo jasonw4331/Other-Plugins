@@ -1,0 +1,19 @@
+name: AirSneakBoots
+author: "jasonwynn10"
+version: 0.1.3
+api:
+- 3.0.0-ALPHA1
+- 3.0.0-ALPHA2
+- 3.0.0-ALPHA3
+- 3.0.0-ALPHA4
+- 3.0.0-ALPHA5
+main: jasonwynn10\Main
+description: "Adds in boots that give the player the ability to sneak on air"
+commands:
+  boots:
+    usage: "/boots"
+    description: "Gives the player the special boots"
+    permission: boots
+permissions:
+  boots:
+    default: op

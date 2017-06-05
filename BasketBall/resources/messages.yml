@@ -1,0 +1,26 @@
+# TODO: Put LostTeam Logo Here
+---
+###############
+#Queue messages
+###############
+queue_join: "You've joined the &aBBall &fqueue"
+queue_playersinqueue: "Waiting players :&2 "
+queue_popup: "&4» You've joined the BBall queue"
+queue_alreadyinqueue: "&4You are already in the queue !"
+
+##############
+#Duel messages
+##############
+game_tip: "&6» You are strarting a game !"
+game_against: "&6&l>> game against :&4 "
+game_start: "&f&l++++++++=++++++++\n&6> You are starting a game !\n&6> You have &23min !\n&6> Good luck :) !\n&f&l++++++++=++++++++"
+game_winner: "&6&l> You won the game against :&4 "
+game_loser: "&6&l> You've lost the game against :&4 "
+game_broadcast: "&6&l won a game against "
+game_timeover: "&f&l++++++++=++++++++\n&6> Playing time &6over&6, no winners !\n&6> Be faster next time !\n&f&l++++++++=++++++++"
+
+###############
+#Arena messages
+###############
+court_alreadyincourt: "&4You are already in a court !"
+...

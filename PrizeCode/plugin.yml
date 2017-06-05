@@ -1,0 +1,15 @@
+name: PrizeCode
+author: "jasonwynn10"
+version: 0.1.0
+api:
+- 3.0.0-ALPHA4
+main: jasonwynn10\Main
+description: "A prize plugin"
+commands:
+  code:
+    usage: "/code <code>"
+    permission: code
+    description: "main command"
+permissions:
+  code:
+    default: true

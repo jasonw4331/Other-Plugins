@@ -1,0 +1,22 @@
+name: ChunkLoaders
+author: "jasonwynn10"
+version: 0.1.0
+api:
+- 3.0.0-ALPHA3
+- 3.0.0-ALPHA4
+- 3.0.0-ALPHA5
+main: jasonwynn10\Main
+description: ""
+commands:
+  chunk:
+    usage: "/chunk <save|unsave> <X-coord> <Z-coord> <Level>"
+    permission: chunk
+    description: "This command allows a user to keep a chunk from being unloaded in a world"
+permissions:
+  chunk:
+    default: op
+    children:
+      chunk.save:
+        default: op
+      chunk.unsave:
+        default: op

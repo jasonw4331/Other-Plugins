@@ -1,0 +1,21 @@
+name: ViperKits
+main: ViperKits\ViperKits
+version: 0.1.0_beta
+author: jasonwynn10
+api: [2.0.0,2.1.0,1.13.1]
+softdepend: ["EconomyAPI", "PocketMoney"]
+permissions:
+ ViperKits:
+  default: op
+  children:
+   ViperKits.use:
+    default: op
+   battlekits.listkits:
+    default: true
+   ViperKits.sign:
+    default: op
+    children:
+     ViperKits.sign.use:
+      default: true
+     ViperKits.sign.create:
+      default: op
