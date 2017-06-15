@@ -9,17 +9,16 @@ class Corrector extends PluginTask {
     /** @var int $bpt */
     private $bpt;
     /** @var int[] $blockTypes */
-    private $blockTypes = [
-        "0:0" => "0:0"
-    ];
-    public function __construct(Plugin $plugin, $bpt) {
+    private $blockTypes = [];
+    public function __construct(Plugin $plugin) {
         parent::__construct($plugin);
-        $this->bpt = $bpt;
+        $this->bpt = $plugin->getConfig()->get("BlocksPerTick",256);
+        $this->blockTypes = $plugin->getConfig()->get("blocks", []);
     }
     public function onRun($currentTick) {
         $blocks = 0;
         foreach($this->getOwner()->getServer()->getLevels() as $level) {
-            $height = 256; //TODO set based on level provider
+            $height = $level->getProvider()->getWorldHeight();
             foreach($level->getChunks() as $chunk) {
                 for($x = 0; $x <= 16; $x++) {
                     for($z = 0; $z <= 16; $z++) {
@@ -31,10 +30,13 @@ class Corrector extends PluginTask {
                                     $arr = explode(":",$this->blockTypes["{$block->getId()}:{$block->getDamage()}"]);
                                     if(is_int($arr[0]) and is_int($arr[1])) {
                                         $chunk->setBlock($x, $y, $z, $arr[0], $arr[1]);
+                                        $blocks++;
+                                    }else{
+                                        $this->getOwner()->getLogger()->error("Invalid value set in config at block {$block->getId()}:{$block->getDamage()}");
                                     }
                                 }
                             }else{
-                                $this->getOwner()->getServer()->getScheduler()->scheduleDelayedTask(new self($this->getOwner(),$this->bpt), 1); //TODO
+                                $this->getOwner()->getServer()->getScheduler()->scheduleDelayedTask($this, 1);
                             }
                         }
                     }
