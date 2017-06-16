@@ -57,7 +57,7 @@ class EventListener implements Listener {
     				$this->plugin->setOutdatedClientMessage($this->plugin->getDefaultOutdatedClientMessage($player));
     			}
     			//Outdated Client Kick Event
-    			$this->plugin->getServer()->getPluginManager()->callEvent(new CustomAlertsOutdatedClientKickEvent($player));
+    			$this->plugin->getServer()->getPluginManager()->callEvent(new CustomAlertsOutdatedClientKickEvent($player, $this->plugin));
     			//Check if Outdated Client message is not empty
     			if($this->plugin->getOutdatedClientMessage() != null){
     				$player->close("", $this->plugin->getOutdatedClientMessage());
@@ -69,7 +69,7 @@ class EventListener implements Listener {
     				$this->plugin->setOutdatedServerMessage($this->plugin->getDefaultOutdatedServerMessage($player));
     			}
     			//Outdated Server Kick Event
-    			$this->plugin->getServer()->getPluginManager()->callEvent(new CustomAlertsOutdatedServerKickEvent($player));
+    			$this->plugin->getServer()->getPluginManager()->callEvent(new CustomAlertsOutdatedServerKickEvent($player, $this->plugin));
     			//Check if Outdated Server message is not empty
     			if($this->plugin->getOutdatedServerMessage() != null){
     				$player->close("", $this->plugin->getOutdatedServerMessage());
@@ -93,7 +93,7 @@ class EventListener implements Listener {
     				$this->plugin->setWhitelistMessage($this->plugin->getDefaultWhitelistMessage($player));
     			}
     			//Whitelist Kick Event
-    			$this->plugin->getServer()->getPluginManager()->callEvent(new CustomAlertsWhitelistKickEvent($player));
+    			$this->plugin->getServer()->getPluginManager()->callEvent(new CustomAlertsWhitelistKickEvent($player, $this->plugin));
     			//Check if Whitelist message is not empty
     			if($this->plugin->getWhitelistMessage() != null){
     				$player->close("", $this->plugin->getWhitelistMessage());
@@ -106,7 +106,7 @@ class EventListener implements Listener {
     			$this->plugin->setFullServerMessage($this->plugin->getDefaultFullServerMessage($player));
     		}
     		//Full Server Kick Event
-    		$this->plugin->getServer()->getPluginManager()->callEvent(new CustomAlertsFullServerKickEvent($player));
+    		$this->plugin->getServer()->getPluginManager()->callEvent(new CustomAlertsFullServerKickEvent($player, $this->plugin));
     		//Check if Full Server message is not empty
     		if($this->plugin->getFullServerMessage() != null){
     			$player->close("", $this->plugin->getFullServerMessage());
@@ -130,7 +130,7 @@ class EventListener implements Listener {
     		$this->plugin->setMotdMessage($this->plugin->translateColors("&", $this->plugin->getServer()->getMotd()));
     	}
     	//Motd Update Event
-    	$this->plugin->getServer()->getPluginManager()->callEvent(new CustomAlertsMotdUpdateEvent($this->plugin->getServer()->getMotd()));
+    	$this->plugin->getServer()->getPluginManager()->callEvent(new CustomAlertsMotdUpdateEvent($this->plugin->getServer()->getMotd(), $this->plugin));
     	$this->plugin->getServer()->getNetwork()->setName($this->plugin->getMotdMessage());
     	//Join Message
     	$status = 0;
@@ -156,7 +156,7 @@ class EventListener implements Listener {
     		}
     	}
     	//Join Event
-    	$this->plugin->getServer()->getPluginManager()->callEvent(new CustomAlertsJoinEvent($player, $event->getJoinMessage()));
+    	$this->plugin->getServer()->getPluginManager()->callEvent(new CustomAlertsJoinEvent($player, $event->getJoinMessage(), $this->plugin));
     	$event->setJoinMessage($this->plugin->getJoinMessage());
     }
     
@@ -174,7 +174,7 @@ class EventListener implements Listener {
     	 	$this->plugin->setMotdMessage($this->plugin->translateColors("&", $this->plugin->getServer()->getMotd()));
     	 }
     	 //Motd Update Event
-    	 $this->plugin->getServer()->getPluginManager()->callEvent(new CustomAlertsMotdUpdateEvent($this->plugin->getServer()->getMotd()));
+    	 $this->plugin->getServer()->getPluginManager()->callEvent(new CustomAlertsMotdUpdateEvent($this->plugin->getServer()->getMotd(), $this->plugin));
     	 $this->plugin->getServer()->getNetwork()->setName($this->plugin->getMotdMessage());
     	 $this->plugin->setQuitMessage($event->getQuitMessage());
     	 //Check if Quit message is hidden
@@ -187,7 +187,7 @@ class EventListener implements Listener {
     	 	}
     	 }
     	 //Quit Event
-    	 $this->plugin->getServer()->getPluginManager()->callEvent(new CustomAlertsQuitEvent($player, $event->getQuitMessage()));
+    	 $this->plugin->getServer()->getPluginManager()->callEvent(new CustomAlertsQuitEvent($player, $event->getQuitMessage(), $this->plugin));
     	 $event->setQuitMessage($this->plugin->getQuitMessage());
     }
 
@@ -209,7 +209,7 @@ class EventListener implements Listener {
     			$this->plugin->setWorldChangeMessage($this->plugin->getDefaultWorldChangeMessage($player, $origin, $target));
     		}
     	    //WorldChange Event
-    	    $this->plugin->getServer()->getPluginManager()->callEvent(new CustomAlertsWorldChangeEvent($player, $origin, $target));
+    	    $this->plugin->getServer()->getPluginManager()->callEvent(new CustomAlertsWorldChangeEvent($player, $origin, $target, $this->plugin));
     		if($this->plugin->getWorldChangeMessage() != ""){
     			Server::getInstance()->broadcastMessage($this->plugin->getWorldChangeMessage());
     		}
@@ -236,7 +236,7 @@ class EventListener implements Listener {
     			}
     		}
             //Death Event
-    	    $this->plugin->getServer()->getPluginManager()->callEvent(new CustomAlertsDeathEvent($player, $cause));
+    	    $this->plugin->getServer()->getPluginManager()->callEvent(new CustomAlertsDeathEvent($player, $cause, $this->plugin));
     		$event->setDeathMessage($this->plugin->getDeathMessage());
     	}
     }

@@ -24,8 +24,9 @@ class CustomAlertsMotdUpdateEvent extends PluginEvent {
 	/**
 	 * @param string $pocketminemessage The default PocketMine motd message
 	 */
-	public function __construct($pocketminemessage){
+	public function __construct($pocketminemessage, $plugin){
 		$this->pocketminemessage = $pocketminemessage;
+		parent::__construct($plugin);
 	}
 	
 	/**

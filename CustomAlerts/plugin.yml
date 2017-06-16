@@ -1,14 +1,7 @@
 name: CustomAlerts
 main: CustomAlerts\CustomAlerts
-version: 1.7
+version: 1.7.2
 api:
-- 1.0.0
-- 2.0.0
-- 2.1.0
-- 3.0.0-ALPHA1
-- 3.0.0-ALPHA2
-- 3.0.0-ALPHA3
-- 3.0.0-ALPHA4
 - 3.0.0-ALPHA5
 load: STARTUP
 author: EvolSoft
@@ -17,7 +10,7 @@ website: "http://www.evolsoft.tk"
 
 commands:
   customalerts:
-    aliases: ["calerts"]
+    aliases: ["calerts","ca"]
     description: CustomAlerts Master Command
     permission: customalerts
 permissions:

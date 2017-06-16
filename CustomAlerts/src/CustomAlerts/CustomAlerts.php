@@ -21,7 +21,6 @@ use pocketmine\event\entity\EntityDeathEvent;
 use pocketmine\level\Level;
 use pocketmine\Player;
 use pocketmine\plugin\PluginBase;
-use pocketmine\Server;
 use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat;
 
@@ -160,29 +159,6 @@ class CustomAlerts extends PluginBase {
      */
     public function getAPIVersion(){
     	return CustomAlerts::API_VERSION;
-    }
-    
-    /**
-     * @deprecated
-     * Register Plugin as CustomAlerts Extension
-     * 
-     * @param PluginBase $extension The Plugin to register as extension
-     * @param int $priority (optional)
-     */
-    public function registerExtension(PluginBase $extension, $priority = null){
-    	Server::getInstance()->getLogger()->warning("This function has been deprecated since CustomAlerts API v1.1");
-    }
-    
-    /**
-     * @deprecated
-     * Get all CustomAlerts loaded extensions
-     * 
-     * @param int $priority (optional)
-     * 
-     * @return array All CustomAlerts loaded extensions if no priority specified, otherwise returns all extesions with the specified priority
-     */
-    public function getAllExtensions($priority = null){
-    	Server::getInstance()->getLogger()->warning("This function has been deprecated since CustomAlerts API v1.1");
     }
     
     /**

@@ -24,8 +24,9 @@ class CustomAlertsOutdatedServerKickEvent extends PluginEvent {
 	/**
 	 * @param Player $player
 	 */
-	public function __construct(Player $player){
+	public function __construct(Player $player,$plugin){
 		$this->player = $player;
+		parent::__construct($plugin);
 	}
 
 	/**

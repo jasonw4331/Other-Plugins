@@ -32,7 +32,7 @@ class MotdTask extends PluginTask {
     		if(CustomAlerts::getAPI()->isMotdCustom()){
     			CustomAlerts::getAPI()->setMotdMessage(CustomAlerts::getAPI()->getDefaultMotdMessage());
     		}
-			$this->getOwner()->getServer()->getPluginManager()->callEvent(new CustomAlertsMotdUpdateEvent($this->getOwner()->getServer()->getMotd()));
+			$this->getOwner()->getServer()->getPluginManager()->callEvent(new CustomAlertsMotdUpdateEvent($this->getOwner()->getServer()->getMotd(), $this->getOwner()));
     		$this->counter = 0;
     	}
     }

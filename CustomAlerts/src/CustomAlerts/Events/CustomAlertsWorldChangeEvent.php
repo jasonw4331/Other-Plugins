@@ -33,10 +33,11 @@ class CustomAlertsWorldChangeEvent extends PluginEvent {
 	 * @param Level $origin
 	 * @param Level $target
 	 */
-	public function __construct(Player $player, Level $origin, Level $target){
+	public function __construct(Player $player, Level $origin, Level $target, $plugin){
 		$this->player = $player;
 		$this->origin = $origin;
 		$this->target = $target;
+		parent::__construct($plugin);
 	}
 	
 	/**

@@ -29,11 +29,12 @@ class CustomAlertsDeathEvent extends PluginEvent {
 	/**
 	 * @param Player $player
 	 * @param Level $origin
-	 * @param Level $target
+	 * @param EntityDamageEvent $cause
 	 */
-	public function __construct(Player $player, $cause = null){
+	public function __construct(Player $player, $cause = null, $plugin){
 		$this->player = $player;
 		$this->cause = $cause;
+		parent::__construct($plugin);
 	}
 	
 	/**
