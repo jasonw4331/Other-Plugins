@@ -61,9 +61,7 @@ class Main extends PluginBase {
 		if(strtolower($command) == "worlds") {
 			$sender->sendMessage(TF::YELLOW."---+---Worlds---+---");
 			foreach ($this->getServer()->getLevels() as $level) {
-				if(!$level->isClosed()) {
-					$sender->sendMessage(TF::YELLOW.$level->getName());
-				}
+                $sender->sendMessage(TF::YELLOW.$level->getName());
 			}
 			return true;
 		}

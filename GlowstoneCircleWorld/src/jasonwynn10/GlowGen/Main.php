@@ -1,5 +1,5 @@
 <?php
-namespace jasonwynn10;
+namespace jasonwynn10\GlowGen;
 
 use pocketmine\level\generator\Generator;
 use pocketmine\plugin\PluginBase;

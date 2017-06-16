@@ -4,7 +4,7 @@ version: 0.1.0
 api:
 - 3.0.0-ALPHA4
 - 3.0.0-ALPHA5
-main: jasonwynn10\Main
+main: jasonwynn10\TagMods\Main
 description: "A plugin that allows players to add things onto their nametags"
 depend: PureChat
 commands:

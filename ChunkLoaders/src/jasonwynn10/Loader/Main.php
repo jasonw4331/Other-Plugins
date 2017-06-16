@@ -1,5 +1,5 @@
 <?php
-namespace jasonwynn10;
+namespace jasonwynn10\Loader;
 
 use pocketmine\event\level\ChunkUnloadEvent;
 use pocketmine\event\Listener;

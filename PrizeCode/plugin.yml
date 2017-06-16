@@ -3,7 +3,7 @@ author: "jasonwynn10"
 version: 0.1.0
 api:
 - 3.0.0-ALPHA4
-main: jasonwynn10\Main
+main: jasonwynn10\prize\Main
 description: "A prize plugin"
 commands:
   code:

@@ -1,5 +1,5 @@
 <?php
-namespace jasonwynn10;
+namespace jasonwynn10\Bancid;
 
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
@@ -123,5 +123,8 @@ class Main extends PluginBase implements Listener {
         $this->getConfig()->set("Banned", $banned);
         $this->getConfig()->set("Times", $times);
         $this->getConfig()->save();
+    }
+    public function getConfig() {
+        return $this->config;
     }
 }

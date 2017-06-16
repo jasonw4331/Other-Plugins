@@ -1,5 +1,5 @@
 <?php
-namespace jasonwynn10;
+namespace jasonwynn10\Bancid;
 
 use pocketmine\scheduler\PluginTask;
 
@@ -13,11 +13,11 @@ class TimeTask extends PluginTask {
     public  function onRun($currentTick) {
         $times = $this->owner->getConfig()->get("Times", []);
         foreach ($times as $id => $time) {
-            if($time-1 <= 0) {
+            if($time-- <= 0) {
                 $this->owner->unBanPlayer($id);
             }
             $times = $this->owner->getConfig()->get("Times", []); //to prevent issues with time unbanning
-            $times[$id] = $time - 1;
+            $times[$id] = $time;
         }
         $this->owner->getConfig()->get("Times", $times);
     }

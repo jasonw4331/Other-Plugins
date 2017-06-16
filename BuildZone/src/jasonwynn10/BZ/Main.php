@@ -1,5 +1,5 @@
 <?php
-namespace jasonwynn10;
+namespace jasonwynn10\BZ;
 
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;

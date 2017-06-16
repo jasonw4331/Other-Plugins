@@ -1,5 +1,5 @@
 <?php
-namespace jasonwynn10;
+namespace jasonwynn10\prize;
 
 use pocketmine\item\Item;
 use pocketmine\plugin\PluginBase;

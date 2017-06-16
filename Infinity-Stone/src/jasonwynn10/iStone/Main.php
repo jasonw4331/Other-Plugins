@@ -1,5 +1,5 @@
 <?php
-namespace jasonwynn10;
+namespace jasonwynn10\iStone;
 
 
 use pocketmine\command\CommandSender;

@@ -1,5 +1,5 @@
 <?php
-namespace jasonwynn10;
+namespace jasonwynn10\LB;
 
 use pocketmine\block\Gold;
 use pocketmine\event\block\BlockBreakEvent;

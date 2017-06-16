@@ -1,5 +1,5 @@
 <?php
-namespace jasonwynn10;
+namespace jasonwynn10\TagMods;
 
 use _64FF00\PureChat\PureChat;
 use pocketmine\Player;

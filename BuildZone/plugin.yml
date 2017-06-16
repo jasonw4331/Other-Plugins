@@ -1,7 +1,7 @@
 name: BuildZone
 author: "jasonwynn10"
 version: 1.0.7
-main: jasonwynn10\Main
+main: jasonwynn10\BZ\Main
 api: [1.13.1, 2.0.0]
 description: "World Protection at it's finest!"
 website: "https://github.com/jasonwynn10/BuildZone"

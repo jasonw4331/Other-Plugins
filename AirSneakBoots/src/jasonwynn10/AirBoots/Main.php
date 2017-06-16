@@ -1,5 +1,5 @@
 <?php
-namespace jasonwynn10;
+namespace jasonwynn10\AirBoots;
 
 /*
  *      _      _          ____                           _      ____                    _

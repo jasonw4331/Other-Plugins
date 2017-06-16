@@ -4,6 +4,6 @@ version: 0.1.2
 api:
 - 3.0.0-ALPHA4
 - 3.0.0-ALPHA5
-main: jasonwynn10\Main
+main: jasonwynn10\GlowGen\Main
 description: ""
 load: STARTUP
