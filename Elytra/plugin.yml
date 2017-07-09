@@ -1,0 +1,21 @@
+name: Elytra
+author: Ad5001
+version: 2.0
+api: [3.0.0-ALPHA5]
+main: Ad5001\Elytra\Main
+load: STARTUP
+commands: 
+    opelytra:
+        description: "Make your elytras your wear MAGIC !"
+        usage: "/opelytra"
+        permission: elytra.getopelytra
+    boost:
+        description: "Boost yourself in elytra !"
+        usage: "/boost [strength = 2]"
+        permission: elytra.boost
+        aliases: [b]
+permissions: 
+    elytra.getopelytra:
+        default: op
+    elytra.boost:
+        default: true

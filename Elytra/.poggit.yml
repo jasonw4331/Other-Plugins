@@ -1,0 +1,7 @@
+--- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/Ad5001/Elytra
+branches:
+- master
+projects:
+  Elytra:
+    path: ""
+...

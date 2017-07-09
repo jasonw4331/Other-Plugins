@@ -1,0 +1,5 @@
+---
+chat-disabled-message: true
+disabled-in-worlds:
+ - NoChatHere
+...
