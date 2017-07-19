@@ -38,4 +38,3 @@ class CustomAlertsOutdatedClientKickEvent extends PluginEvent {
 		return $this->player;
 	}
 }
-?>
