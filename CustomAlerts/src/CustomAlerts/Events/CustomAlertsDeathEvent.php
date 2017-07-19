@@ -56,4 +56,4 @@ class CustomAlertsDeathEvent extends PluginEvent {
 	}
 	
 }
-?>
+<?
