@@ -52,4 +52,3 @@ class CustomAlertsJoinEvent extends PluginEvent {
 		return $this->pocketminemessage;
 	}
 }
-?>
