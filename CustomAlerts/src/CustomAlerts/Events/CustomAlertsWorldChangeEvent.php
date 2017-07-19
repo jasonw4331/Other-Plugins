@@ -68,4 +68,3 @@ class CustomAlertsWorldChangeEvent extends PluginEvent {
 	}
 	
 }
-?>
