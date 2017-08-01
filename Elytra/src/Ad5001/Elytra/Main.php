@@ -63,7 +63,6 @@ class Main extends PluginBase implements Listener {
 		$player = $event->getPlayer();
 		   if($player->getInventory()->getChestplate()->getId() == 444) {
 			   $flyingUp = false;
-			   // TODO: Show current player in elytra mode
 			   // TODO: change Bounding Box of player depending on their angle of flight
 			   for($i = 2; $i > 0; $i--) {
 				   if($player->getLevel()->getBlock(new Vector3(round($player->x), round($player->y) - $i, round($player->z)))->getId() !== 0) {
