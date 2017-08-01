@@ -16,7 +16,7 @@ class SleepTask extends PluginTask {
         $this->visual = $visual;
     }
     
-    public function onRun($currentTick) {
+    public function onRun(int $currentTick) {
         $l = $this->getOwner()->getServer()->getLevelByName($this->levelName);
         if($this->visual) {
             $time = $l->getTime();

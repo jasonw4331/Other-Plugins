@@ -15,7 +15,7 @@ class Main extends PluginBase implements Listener {
     public function onEnable() {
         $this->getServer()->getPluginManager()->registerEvents($this,$this);
     }
-    public function onCommand(CommandSender $issuer,Command $cmd,$label,array $args) {
+    public function onCommand(CommandSender $issuer,Command $cmd,string $label,array $args) : bool {
         if(strtolower($cmd->getName()) == "ps" ) {
             if($issuer->hasPermission("peacefulspawn") || $issuer->hasPermission("peacefulspawn.toggle")) {
                 $this->enabled = !$this->enabled;

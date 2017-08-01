@@ -25,7 +25,7 @@ class SetCommand extends Command {
         parent::__construct("/set", "WorldEdit set command", "//set <blockId>", []);
     }
 
-    public function execute(CommandSender $sender, $commandLabel, array $args) {
+    public function execute(CommandSender $sender, string $commandLabel, array $args) : bool {
         if($sender instanceof Player) {
             if($sender->hasPermission("worldedit.command.*" or $sender->hasPermission("worldedit.command.set"))) {
                 if(isset($args[0])) {

@@ -11,6 +11,7 @@
 
 namespace CustomAlerts\Events;
 
+use CustomAlerts\CustomAlerts;
 use pocketmine\event\plugin\PluginEvent;
 use pocketmine\Player;
 
@@ -23,8 +24,9 @@ class CustomAlertsWhitelistKickEvent extends PluginEvent {
 	
 	/**
 	 * @param Player $player
+	 * @param CustomAlerts $plugin
 	 */
-	public function __construct(Player $player, $plugin){
+	public function __construct(Player $player, CustomAlerts $plugin){
 		$this->player = $player;
 		parent::__construct($plugin);
 	}

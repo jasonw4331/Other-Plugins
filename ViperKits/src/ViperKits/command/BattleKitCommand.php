@@ -5,6 +5,7 @@ use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\command\PluginIdentifiableCommand;
 use pocketmine\Player;
+use pocketmine\plugin\Plugin;
 use ViperKits\ViperKits;
 
 class BattleKitCommand extends Command implements PluginIdentifiableCommand{
@@ -13,7 +14,7 @@ class BattleKitCommand extends Command implements PluginIdentifiableCommand{
         parent::__construct("ViperKits", "Get your kits.", "/kit [name]", ["vk", "kit", "kits"]);
         $this->main = $main;
     }
-    public function execute(CommandSender $sender, $label, array $args){
+    public function execute(CommandSender $sender, string $label, array $args) : bool {
         if(isset($args[0])){
             if($sender instanceof Player){
                 $this->getPlugin()->getKitPaymentController()->grantKit($args[0], $sender);
@@ -42,8 +43,12 @@ class BattleKitCommand extends Command implements PluginIdentifiableCommand{
                 $sender->sendMessage("Listed $count of " . count($this->getPlugin()->getKitStore()->getKits()));
             }
         }
+	    return true;
     }
-    public function getPlugin(){
+	/**
+	 * @return ViperKits
+	 */
+    public function getPlugin() : Plugin {
         return $this->main;
     }
 }

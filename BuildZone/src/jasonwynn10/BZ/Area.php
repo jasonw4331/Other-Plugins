@@ -34,8 +34,7 @@ class Area {
     public function getPos2() {
         return array($this->pos2->getX(),$this->pos2->getY(),$this->pos2->getZ());
     }
-    public function contains($pos) {
-        if($pos instanceof Vector3);
+    public function contains(Vector3 $pos) {
         if((min($this->pos1->getX(),$this->pos2->getX()) <= $pos->getX()) && (max($this->pos1->getX(),$this->pos2->getX()) >= $pos->getX()) && (min($this->pos1->getY(),$this->pos2->getY()) <= $pos->getY()) && (max($this->pos1->getY(),$this->pos2->getY()) >= $pos->getY()) && (min($this->pos1->getZ(),$this->pos2->getZ()) <= $pos->getZ()) && (max($this->pos1->getZ(),$this->pos2->getZ()) >= $pos->getZ())) {
             return true;
         }

@@ -2,10 +2,10 @@
 
 namespace Minifixio\onevsone\model;
 
+use pocketmine\Player;
 use pocketmine\scheduler\PluginTask;
 use pocketmine\utils\TextFormat;
 use pocketmine\plugin\Plugin;
-
 
 class CountDownToDuelTask extends PluginTask{
 	
@@ -20,12 +20,14 @@ class CountDownToDuelTask extends PluginTask{
 		$this->countdownValue = CountDownToDuelTask::COUNTDOWN_DURATION;
 	}
 	
-	public function onRun($currentTick){
+	public function onRun(int $currentTick){
 		if(count($this->arena->players) < 2){
 			$this->arena->abortDuel();
 		}
 		else{
+			/** @var Player $player1 */
 			$player1 = $this->arena->players[0];
+			/** @var Player $player2 */
 			$player2 = $this->arena->players[1];
 			
 			if(!$player1->isOnline() || !$player2->isOnline()){

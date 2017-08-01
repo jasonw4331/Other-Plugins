@@ -30,12 +30,14 @@ class Farms extends PluginBase implements Listener {
 		$this->getServer()->getScheduler()->scheduleRepeatingTask(new FarmsTask($this ), 20 );
 		$this->getServer()->getPluginManager()->registerEvents($this, $this );
 	}
+
 	public function onDisable() {
 		$this->farmConfig->setAll($this->farmData );
 		$this->farmConfig->save();
 		
 		$this->speedConfig->save();
 	}
+
 	public function onBlock(PlayerInteractEvent $event) {
 		if (! $event->getPlayer()->hasPermission("Farms")and ! $event->getPlayer()->hasPermission("Farms.VIP" )) return;
 		$block = $event->getBlock()->getSide(1 );
@@ -45,7 +47,7 @@ class Farms extends PluginBase implements Listener {
 			$tree = $event->getBlock()->getSide($event->getFace() );
 			// Jungle wood
 			if ($tree->getId() == Block::WOOD and $tree->getDamage() == 3) {
-				$event->getBlock()->getLevel()->setBlock($event->getBlock()->getSide($event->getFace() ), new CocoaBeanBlock($event->getFace() ), true, true );
+				$event->getBlock()->getLevel()->setBlock($event->getBlock()->getSide($event->getFace()), Block::get(Block::COCOA_BLOCK, $event->getFace()), true, true);
 				return;
 			}
 		}
@@ -66,6 +68,7 @@ class Farms extends PluginBase implements Listener {
 			}
 		}
 	}
+
 	public function onBlockBreak(BlockBreakEvent $event) {
 		$key = $event->getBlock()->x.".".$event->getBlock()->y.".".$event->getBlock()->z;
 		foreach($this->crops as $crop){
@@ -104,6 +107,7 @@ class Farms extends PluginBase implements Listener {
             $this->farmData[$key]['time'] = $this->speedData["growing-time"];
 		}
 	}
+
 	public function makeTimestamp($date) {
 		$yy = substr($date, 0, 4 );
 		$mm = substr($date, 5, 2 );

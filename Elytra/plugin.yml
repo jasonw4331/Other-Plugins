@@ -1,7 +1,9 @@
 name: Elytra
 author: Ad5001
 version: 2.0
-api: [3.0.0-ALPHA5]
+api:
+ - 3.0.0
+ - 3.0.0-ALPHA7
 main: Ad5001\Elytra\Main
 load: STARTUP
 commands: 

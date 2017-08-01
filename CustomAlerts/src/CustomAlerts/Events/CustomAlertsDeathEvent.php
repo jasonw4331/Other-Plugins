@@ -11,9 +11,9 @@
 
 namespace CustomAlerts\Events;
 
+use CustomAlerts\CustomAlerts;
 use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\plugin\PluginEvent;
-use pocketmine\level\Level;
 use pocketmine\Player;
 
 class CustomAlertsDeathEvent extends PluginEvent {
@@ -28,10 +28,10 @@ class CustomAlertsDeathEvent extends PluginEvent {
 	
 	/**
 	 * @param Player $player
-	 * @param Level $origin
 	 * @param EntityDamageEvent $cause
+	 * @param CustomAlerts $plugin
 	 */
-	public function __construct(Player $player, $cause = null, $plugin){
+	public function __construct(Player $player, $cause = null, CustomAlerts $plugin){
 		$this->player = $player;
 		$this->cause = $cause;
 		parent::__construct($plugin);

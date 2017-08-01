@@ -23,7 +23,7 @@ class Main extends PluginBase implements Listener {
         $this->getServer()->getScheduler()->scheduleRepeatingTask(new TimeTask($this), 20*60); //run every minute
         $this->getLogger()->notice("Enabled!");
     }
-    public function onCommand(CommandSender $sender, Command $command, $label, array $args) {
+    public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool {
         if(strtolower($command) == "bancid") {
             if (isset($args[0])) {
                 if(($player = $this->getServer()->getPlayer($args[0])) instanceof Player) {
@@ -124,7 +124,7 @@ class Main extends PluginBase implements Listener {
         $this->getConfig()->set("Times", $times);
         $this->getConfig()->save();
     }
-    public function getConfig() {
+    public function getConfig() : Config {
         return $this->config;
     }
 }

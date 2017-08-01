@@ -11,8 +11,8 @@
 
 namespace CustomAlerts\Events;
 
+use CustomAlerts\CustomAlerts;
 use pocketmine\event\plugin\PluginEvent;
-use pocketmine\Player;
 
 class CustomAlertsMotdUpdateEvent extends PluginEvent {
 	
@@ -23,8 +23,9 @@ class CustomAlertsMotdUpdateEvent extends PluginEvent {
 	
 	/**
 	 * @param string $pocketminemessage The default PocketMine motd message
+	 * @param CustomAlerts $plugin
 	 */
-	public function __construct($pocketminemessage, $plugin){
+	public function __construct(string $pocketminemessage, CustomAlerts $plugin){
 		$this->pocketminemessage = $pocketminemessage;
 		parent::__construct($plugin);
 	}

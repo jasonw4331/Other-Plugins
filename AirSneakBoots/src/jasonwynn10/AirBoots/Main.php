@@ -47,7 +47,7 @@ class Main extends PluginBase implements Listener {
      * @param array $args
      * @return bool
      */
-    public function onCommand(CommandSender $sender, Command $command, $label, array $args) {
+    public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool {
 		if(strtolower($command) == "boots") {
 			if($sender instanceof Player) {
 				$item = Item::get(Armor::DIAMOND_BOOTS);

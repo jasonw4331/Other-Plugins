@@ -2,16 +2,15 @@
 
 namespace Minifixio\onevsone\model;
 
+use Minifixio\onevsone\ArenaManager;
 use pocketmine\scheduler\PluginTask;
-use pocketmine\utils\TextFormat;
-
 
 class SignRefreshTask extends PluginTask{
 	
-	/** var ArenaManager **/
+	/** @var ArenaManager $arenaManager **/
 	public $arenaManager;
 	
-	public function onRun($currentTick){
+	public function onRun(int $currentTick){
 		$this->arenaManager->refreshSigns();
 	}
 	

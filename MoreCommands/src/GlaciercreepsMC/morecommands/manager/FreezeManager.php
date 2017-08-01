@@ -25,7 +25,7 @@ class FreezeManager implements Listener, CommandExecutor {
         $this->permMessage = TextFormat::RED."You do not have permission for this!";
     }
 
-    public function onCommand(CommandSender $sender, Command $command, $label, array $args) {
+    public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool {
         $count = count($args);
         $cmd = strtolower($command);
 

@@ -10,7 +10,7 @@ class TimeTask extends PluginTask {
         parent::__construct($owner);
         $this->owner = $owner;
     }
-    public  function onRun($currentTick) {
+    public  function onRun(int $currentTick) {
         $times = $this->owner->getConfig()->get("Times", []);
         foreach ($times as $id => $time) {
             if($time-- <= 0) {

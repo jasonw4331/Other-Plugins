@@ -11,6 +11,7 @@
 
 namespace CustomAlerts\Events;
 
+use CustomAlerts\CustomAlerts;
 use pocketmine\event\plugin\PluginEvent;
 use pocketmine\level\Level;
 use pocketmine\Player;
@@ -27,13 +28,13 @@ class CustomAlertsWorldChangeEvent extends PluginEvent {
 	
 	/** @var Level $target */
 	private $target;
-	
 	/**
 	 * @param Player $player
 	 * @param Level $origin
 	 * @param Level $target
+	 * @param CustomAlerts $plugin
 	 */
-	public function __construct(Player $player, Level $origin, Level $target, $plugin){
+	public function __construct(Player $player, Level $origin, Level $target, CustomAlerts $plugin){
 		$this->player = $player;
 		$this->origin = $origin;
 		$this->target = $target;

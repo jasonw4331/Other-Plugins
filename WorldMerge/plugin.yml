@@ -2,7 +2,8 @@ name: WorldMerge
 author: "jasonwynn10"
 version: 0.1.0
 api:
-- 3.0.0-ALPHA2
+ - 3.0.0
+ - 3.0.0-ALPHA7
 main: jasonwynn10\Main
 description: "This plugin allows copying chunks across worlds"
 commands:

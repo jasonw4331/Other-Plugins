@@ -11,6 +11,7 @@
 
 namespace CustomAlerts\Events;
 
+use CustomAlerts\CustomAlerts;
 use pocketmine\event\plugin\PluginEvent;
 use pocketmine\Player;
 
@@ -27,8 +28,9 @@ class CustomAlertsJoinEvent extends PluginEvent {
 	/**
 	 * @param Player $player
 	 * @param string $pocketminemessage The default PocketMine join message
+	 * @param CustomAlerts $plugin
 	 */
-	public function __construct(Player $player, $pocketminemessage, $plugin){
+	public function __construct(Player $player, string $pocketminemessage, CustomAlerts $plugin){
 		$this->player = $player;
 		$this->pocketminemessage = $pocketminemessage;
 		parent::__construct($plugin);

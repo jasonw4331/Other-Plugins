@@ -30,7 +30,7 @@ class BBall extends PluginBase{
 		$this->courtManager = new CourtManager($this, $this->getConfig());
 		$this->getServer()->getPluginManager()->registerEvents(new Events($this->courtManager), $this);
 	}
-	public function onCommand(CommandSender $sender, Command $command, $label, array $args) {
+	public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool {
 		if(strtolower($command) === "bball") {
 			if(!$sender instanceof Player) {
 				$sender->sendMessage("Please use the command in-game");

@@ -12,7 +12,7 @@ class Cooldown extends PluginTask {
         $this->player = $player;
     }
 
-    public function onRun($tick) {
+    public function onRun(int $tick) {
         $this->getOwner()->setAllowed($this->getOwner()->getServer()->getPlayer($this->player), true);
     }
 }

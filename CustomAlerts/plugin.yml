@@ -2,7 +2,8 @@ name: CustomAlerts
 main: CustomAlerts\CustomAlerts
 version: 1.7.2
 api:
-- 3.0.0-ALPHA5
+ - 3.0.0
+ - 3.0.0-ALPHA7
 load: STARTUP
 author: EvolSoft
 description: "Customize alerts (join/leave messages, etc...)"

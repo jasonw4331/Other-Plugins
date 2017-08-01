@@ -11,7 +11,7 @@ class Main extends PluginBase {
 	public function onEnable() {
 		$this->getLogger()->notice(TF::GREEN."Enabled!");
 	}
-	public function onCommand(CommandSender $sender, Command $command, $label, array $args) {
+	public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool {
 		if(strtolower($command) == "world") {
 			if($sender instanceof Player) {
 				if(count($args) >= 1) {

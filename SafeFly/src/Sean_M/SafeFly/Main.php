@@ -38,7 +38,7 @@ class Main extends PluginBase implements Listener {
         }
      }
 
-    public function onCommand(CommandSender $sender, Command $cmd, $label,array $args) {
+    public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) : bool {
         if(strtolower($cmd->getName()) == "fly") {
             if($sender instanceof Player and $sender->hasPermission("safefly.fly")) {
                 if(!$sender->isSurvival()) {

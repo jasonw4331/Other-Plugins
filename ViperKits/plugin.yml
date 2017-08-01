@@ -2,7 +2,9 @@ name: ViperKits
 main: ViperKits\ViperKits
 version: 0.1.0_beta
 author: jasonwynn10
-api: [2.0.0,2.1.0,1.13.1]
+api:
+ - 3.0.0
+ - 3.0.0-ALPHA7
 softdepend: ["EconomyAPI", "PocketMoney"]
 permissions:
  ViperKits:

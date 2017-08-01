@@ -3,5 +3,6 @@ main: lifetime\Main
 version: 0.1.0
 author: "jasonwynn10"
 api:
-- 3.0.0-ALPHA4
+ - 3.0.0
+ - 3.0.0-ALPHA7
 description: "Makes the player grow in size each minute until they die"

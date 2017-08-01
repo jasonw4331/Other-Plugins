@@ -1,6 +1,8 @@
 name: CrateKeys
 authors: ["Primus","jasonwynn10"]
-api: [1.12.0, 2.0.0, 3.0.0-ALPHA3]
+api:
+ - 3.0.0
+ - 3.0.0-ALPHA7
 description: "A CrateKeys plugin for PocketMine-MP servers!"
 main: Primus\CrateKeys\Main
 version: 1.0.2

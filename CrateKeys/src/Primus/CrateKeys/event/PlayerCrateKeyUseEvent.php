@@ -8,8 +8,6 @@ use pocketmine\event\Cancellable;
 use pocketmine\item\Item;
 
 class PlayerCrateKeyUseEvent extends PlayerEvent implements Cancellable{
-    /** @var Player $player */
-    protected $player;
     /** @var  Block $target */
     protected $target;
     /** @var Item $key */
@@ -19,10 +17,6 @@ class PlayerCrateKeyUseEvent extends PlayerEvent implements Cancellable{
         $this->player = $player;
         $this->key = $key;
         $this->target = $target;
-    }
-
-    public function getPlayer() {
-        return $this->player;
     }
 
     public function getKey() {

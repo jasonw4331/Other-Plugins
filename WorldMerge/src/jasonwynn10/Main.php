@@ -9,40 +9,30 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\utils\TextFormat as TF;
 
 class Main extends PluginBase {
-	/** @var  Chunk[][] */
-	public $copies = [];
-	/** @var array  */
-	public $chunksave1 = [];
-	/** @var array  */
-	public $chunksave2 = [];
+	/** @var Chunk[] $chunks */
+	public $chunks = [];
 
 	public function onEnable() {
 		$this->getLogger()->notice(TF::GREEN."Enabled!");
 	}
-	public function onCommand(CommandSender $sender, Command $command, $label, array $args) {
+	public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool {
 		if(!$sender instanceof Player) {
 			$sender->sendMessage(TF::YELLOW."You need to be in-game to use this command!");
 			return true;
 		}
-		if(strtolower($command) == "chunk1") {
-			# TODO
-		}
-		if(strtolower($command) == "chunk2") {
-			# TODO
-		}
 		if(strtolower($command) == "copy") {
-			$this->copy($sender);
+			$chunk = $sender->getLevel()->getChunk($sender->getX() >> 4, $sender->getZ() >> 4);
+			if($chunk instanceof Chunk) {
+				$this->chunks[$sender->getName()] = $chunk;
+			}
 		}
 		if(strtolower($command) == "paste") {
-			$this->paste($sender);
+			$this->chunks[$sender->getName()]->setX($sender->getX() >> 4);
+			$this->chunks[$sender->getName()]->setZ($sender->getZ() >> 4);
+			$this->chunks[$sender->getName()]->setChanged();
+			$sender->getLevel()->setChunk($sender->getX() >> 4, $sender->getZ() >> 4, $this->chunks[$sender->getName()]);
 		}
 		return true;
-	}
-	public function copy(Player $player) {
-		# TODO
-	}
-	public function paste(Player $player) {
-		# TODO
 	}
 	public function onDisable() {
 		$this->getLogger()->notice(TF::GREEN."Disabled!");

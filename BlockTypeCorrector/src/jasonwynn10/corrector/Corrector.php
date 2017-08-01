@@ -20,7 +20,7 @@ class Corrector extends PluginTask {
 		$this->blockTypes = $plugin->getConfig()->get("blocks", []);
 		$plugin->getLogger()->info("CORRECTOR STARTING");
 	}
-	public function onRun($currentTick) {
+	public function onRun(int $currentTick) {
         $this->getOwner()->getLogger()->info("CORRECTOR STARTED");
 		$blocks = 0;
         $height = $this->level->getProvider()->getWorldHeight();

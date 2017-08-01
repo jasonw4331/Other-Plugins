@@ -25,7 +25,7 @@ class ReplaceCommand extends Command {
         parent::__construct("/replace", "WorldEdit replace command", "//replace <replacerId> <replacedId>", []);
     }
 
-    public function execute(CommandSender $sender, $commandLabel, array $args) {
+    public function execute(CommandSender $sender, string $commandLabel, array $args) : bool {
         if($sender instanceof Player) {
             if($sender->hasPermission("worldedit.command.*" or $sender->hasPermission("worldedit.command.replace"))) {
                 if(isset($args[0]) and isset($args[1])) {

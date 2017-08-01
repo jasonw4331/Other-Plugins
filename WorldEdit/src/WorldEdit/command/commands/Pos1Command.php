@@ -23,7 +23,7 @@ class Pos1Command extends Command {
         parent::__construct("/pos1", "WorldEdit pos1 command", "/pos1", ["/1"]);
     }
 
-    public function execute(CommandSender $sender, $commandLabel, array $args) {
+    public function execute(CommandSender $sender, string $commandLabel, array $args) : bool {
         if($sender instanceof Player) {
             if($sender->hasPermission("worldedit.command.*") or $sender->hasPermission("worldedit.command.pos1")) {
                 $selectionHandler = $this->plugin->getSelectionHandler();

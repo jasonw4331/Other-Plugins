@@ -19,13 +19,13 @@ class GlowstoneGenerator extends Generator {
     public function init(ChunkManager $level, Random $random) {
         $this->level = $level;
     }
-    public function getName() {
+    public function getName() : string {
         return "Glowstone";
     }
-    public function getSettings() {
+    public function getSettings() : array {
         return [];
     }
-    public function generateChunk($chunkX, $chunkZ) {
+    public function generateChunk(int $chunkX, int $chunkZ) {
         $chunk = $this->level->getChunk($chunkX, $chunkZ);
         if($chunkX == 0 and $chunkZ == 0) {
             for ($Z = 0; $Z < 10; ++$Z) {
@@ -75,8 +75,8 @@ class GlowstoneGenerator extends Generator {
         $chunk->setGenerated();
         $this->level->setChunk($chunkX, $chunkZ, $chunk);
     }
-    public function populateChunk($chunkX, $chunkZ) {}
-    public function getSpawn() {
+    public function populateChunk(int $chunkX, int $chunkZ) {}
+    public function getSpawn() : Vector3 {
         return new Vector3(0, 64, 0);
     }
 }

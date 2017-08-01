@@ -65,7 +65,7 @@ class Main extends PluginBase implements Listener {
       }
     }
   }
-  public function onCommand(CommandSender $sender, Command $command, $label, array $args) {
+  public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool {
     if(strtolower($command) === "infinity") {
       if($sender->hasPermission("infinity.cmd")) {
         $this->set[$sender->getName()] = true;

@@ -30,7 +30,7 @@ class Main extends PluginBase implements Listener {
      * @param array $args
      * @return bool
      */
-    public function onCommand(CommandSender $sender, Command $command, $label, array $args) {
+    public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool {
         if(strtolower($command) == "chunk") {
             if(count($args) == 3) {
                 if(strtolower($args[0]) == "save" and $sender->hasPermission("chunk.save")) {

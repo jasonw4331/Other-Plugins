@@ -15,7 +15,7 @@ class CloseChest extends PluginTask {
         $this->chest = $chest;
     }
 
-    public function onRun($tick) {
+    public function onRun(int $tick) {
         $pk = new BlockEventPacket();
         $pk->x = $this->chest->getX();
         $pk->y = $this->chest->getY();

@@ -16,11 +16,9 @@ class Main extends PluginBase implements Listener {
 
     /** @var Config $a */
     public $a;
+    /** @var Area[] $areas */
     public $areas = array(), $levels, $sel1, $sel2, $pos1, $pos2;
 
-    /**
-     *
-     */
     public function onEnable() {
         $this->getServer()->getPluginManager()->registerEvents($this,$this);
         $this->a = new Config($this->getDataFolder()."areas.yml",Config::YAML,["zones"=>array()]);
@@ -37,7 +35,7 @@ class Main extends PluginBase implements Listener {
      * @param array $args
      * @return bool
      */
-    public function onCommand(CommandSender $player, Command $command, $label, array $args) {
+    public function onCommand(CommandSender $player, Command $command, string $label, array $args) : bool {
         if(strtolower($command) === "bz" or strtolower($command) === "buildzone") {
             if(!($player instanceof Player)) {
                 $player->sendMessage(TF::RED . "Command must be used in-game.");
@@ -89,7 +87,6 @@ class Main extends PluginBase implements Listener {
                     case "list":
                         $player->sendMessage(TF::YELLOW."Areas: ");
                         foreach ($this->areas as $area) {
-                            if($area instanceof Area);
                             $player->sendMessage(TF::YELLOW.$area->getName().", ");
                         }
                         break;
@@ -128,7 +125,6 @@ class Main extends PluginBase implements Listener {
         }
         if(count($this->areas) > 0) {
             foreach($this->areas as $area) {
-                if($area instanceof Area);
                 if($area->contains($ppos) or $area->contains($b)) {
                     $this->getLogger()->debug("There has been an interaction within an unsecured area!");
                 } else {
@@ -159,7 +155,6 @@ class Main extends PluginBase implements Listener {
         $names = array();
         $vars = array();
         foreach ($this->areas as $area) {
-            if($area instanceof Area);
             array_push($names,$area->getName(), $area->getName());
             array_push($vars,$area->getPos1(),$area->getPos2());
             $arr = array_combine($names,$vars);

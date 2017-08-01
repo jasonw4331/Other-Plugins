@@ -1,6 +1,8 @@
 name: Meteor
 main: Meteor\Main
 version: 1.0.0
-api: [1.14.1]
+api:
+ - 3.0.0
+ - 3.0.0-ALPHA7
 load: POSTWORLD
 author: ryu1192

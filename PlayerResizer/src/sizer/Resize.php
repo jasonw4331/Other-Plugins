@@ -7,7 +7,7 @@ use pocketmine\Player;
 
 class Resize extends PluginCommand {
     public function __construct(Main $plugin) {
-        parent::__construct("resize",$plugin);
+        parent::__construct("resize", $plugin);
         $this->setPermission("resize;resize.use;resize.other");
         $this->setDescription("Allows a player to change their size");
         $this->setUsage("/resize <size> [player]");
@@ -21,7 +21,7 @@ class Resize extends PluginCommand {
      * @param array $args
      * @return bool
      */
-    public function execute(CommandSender $sender, $commandLabel, array $args) {
+    public function execute(CommandSender $sender, string $commandLabel, array $args) : bool {
         if($sender instanceof Player and count($args) >= 1) {
             if(isset($args[1])) {
                 if($sender->hasPermission("resize.other")) {

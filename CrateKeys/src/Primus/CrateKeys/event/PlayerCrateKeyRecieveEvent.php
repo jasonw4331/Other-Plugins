@@ -9,8 +9,6 @@ use pocketmine\event\Cancellable;
 class PlayerCrateKeyRecieveEvent extends PlayerEvent implements Cancellable{
     /** @var Block $source */
     protected $source;
-    /** @var Player $player */
-    protected $player;
 
     public function __construct(Player $player, Block $source) {
         $this->player = $player;
@@ -19,9 +17,5 @@ class PlayerCrateKeyRecieveEvent extends PlayerEvent implements Cancellable{
 
     public function getBlock() {
         return $this->source;
-    }
-
-    public function getPlayer() {
-        return $this->player;
     }
 }

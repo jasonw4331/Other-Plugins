@@ -2,11 +2,9 @@ name: Farms
 main: ifteam\Farms\Farms
 version: 1.2-alpha
 author: ifteam
-api: 
-- 1.12.0
-- 1.13.0
-- 2.0.0
-
+api:
+ - 3.0.0
+ - 3.0.0-ALPHA7
 permissions:
  Farms:
   default: true

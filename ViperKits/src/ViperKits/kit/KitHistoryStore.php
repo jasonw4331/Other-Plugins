@@ -31,7 +31,7 @@ class KitHistoryStore implements Listener{
     }
     public function onPlayerRespawn(PlayerRespawnEvent $event) {
         if($this->plugin->getConfig()->get("show-kit-info-on-respawn", true)) {
-            // TODO List kit info here on respawn
+            $event->getPlayer()->sendMessage(""); //TODO:send kit info
         }
         if(isset($this->players[$event->getPlayer()->getName()])) {
             unset($this->players[$event->getPlayer()->getName()]);

@@ -51,7 +51,7 @@ class MoreCommands extends PluginBase {
     }
 
 
-    public function onCommand(CommandSender $sender, Command $command, $label, array $args) {
+    public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool {
 
         $cmd = strtolower($command->getName());
         $count = count($args);

@@ -7,7 +7,7 @@ class FarmsTask extends PluginTask {
 	public function __construct(Farms $owner) {
 		parent::__construct ( $owner );
 	}
-	public function onRun($currentTick) {
+	public function onRun(int $currentTick) {
 		$this->getOwner()->tick();
 	}
 }

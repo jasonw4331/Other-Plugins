@@ -16,7 +16,7 @@ class SignRefreshTask extends PluginTask{
         $this->courtManager = $manager;
     }
 
-	public function onRun($currentTick) {
+	public function onRun(int $currentTick) {
 		$this->courtManager->refreshSigns();
 	}
 }

@@ -25,7 +25,7 @@ class ArenaManager{
 	/** @var Player[] **/
 	private $queue = array();	
 	
-	/** @var Config **/
+	/** @var Config $config **/
 	private $config;
 	
 	/** @var Sign[] **/
@@ -42,20 +42,20 @@ class ArenaManager{
 		PluginUtils::logOnConsole(TextFormat::GREEN . "Init". TextFormat::RED . " ArenaManager");
 		$this->config = $config;
 		
-		if(!$this->config->arenas){
+		if(!$this->config->get("arenas")){
 			$this->config->set('arenas', []);
 			$arenaPositions = [];
 		}
 		else{
-			$arenaPositions = $this->config->arenas;
+			$arenaPositions = $this->config->get("arenas");
 		}
 		
-		if(!$this->config->signs){
+		if(!$this->config->get("signs")){
 			$this->config->set('signs', []);
 			$signPositions = [];
 		}
 		else{
-			$signPositions = $this->config->signs;
+			$signPositions = $this->config->get("signs");
 		}	
 
 		// Load arenas and signs
@@ -219,7 +219,7 @@ class ArenaManager{
 		array_push($this->arenas,$newArena);
 		
 		// Save it to config
-		$arenas = $this->config->arenas;
+		$arenas = $this->config->get("arenas", []);
 		array_push($arenas, [$newArena->position->getX(), $newArena->position->getY(), $newArena->position->getZ(), $newArena->position->getLevel()->getName()]);
 		$this->config->set("arenas", $arenas);
 		$this->config->save();		
@@ -266,7 +266,7 @@ class ArenaManager{
      * @param Sign $signTile
 	 */
 	public function addSign(Sign $signTile){
-		$signs = $this->config->signs;
+		$signs = $this->config->get("signs", []);
 		$signs[count($this->signTiles)] = [$signTile->getX(), $signTile->getY(), $signTile->getZ(), $signTile->getLevel()->getName()];
 		$this->config->set("signs", $signs);
 		$this->config->save();

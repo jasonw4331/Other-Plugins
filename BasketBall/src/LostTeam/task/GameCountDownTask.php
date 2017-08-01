@@ -1,11 +1,9 @@
 <?php
 namespace LostTeam\task;
 
-use pocketmine\Player;
 use pocketmine\scheduler\PluginTask;
 use pocketmine\utils\TextFormat as TF;
 use pocketmine\plugin\Plugin;
-
 
 class GameCountDownTask extends PluginTask{
 
@@ -19,7 +17,7 @@ class GameCountDownTask extends PluginTask{
 		$this->court = $court;
 		$this->countdownValue = self::COUNTDOWN_DURATION;
 	}
-	public function onRun($currentTick){
+	public function onRun(int $currentTick){
 		if(count($this->court->players) < 2){
 			$this->court->abortDuel();
 		}

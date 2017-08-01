@@ -14,7 +14,7 @@ class RoundCheckTask extends PluginTask{
         $this->court= $court;
     }
 
-    public function onRun($currentTick) {
+    public function onRun(int $currentTick) {
 		$this->court->onRoundEnd();
 	}
 }

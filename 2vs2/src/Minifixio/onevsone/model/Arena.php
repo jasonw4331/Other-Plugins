@@ -3,22 +3,17 @@
 namespace Minifixio\onevsone\model;
 
 use Minifixio\onevsone\OneVsOne;
-use Minifixio\onevsone\utils\PluginUtils;
+use Minifixio\onevsone\ArenaManager;
 
 use pocketmine\Player;
+use pocketmine\scheduler\TaskHandler;
 use pocketmine\Server;
 use pocketmine\level\Position;
 use pocketmine\item\Item;
 use pocketmine\utils\TextFormat;
-use pocketmine\entity\Effect;
-use pocketmine\entity\InstantEffect;
 use pocketmine\math\Vector3;
-use pocketmine\level\particle\SmokeParticle;
 use pocketmine\block\Block;
 use pocketmine\level\particle\DestroyBlockParticle;
-
-use \DateTime;
-use Minifixio\onevsone\ArenaManager;
 
 class Arena{
 
@@ -41,12 +36,15 @@ class Arena{
 	const PLAYER_2_OFFSET_X = -5;
 	
 	// Variable for stop the round's timer
+	/** @var TaskHandler $taskHandler */
 	private $taskHandler;
+	/** @var TaskHandler $countdownTaskHandler */
 	private $countdownTaskHandler;
-
 	/**
 	 * Build a new Arena
+	 *
 	 * @param Position position Base position of the Arena
+	 * @param ArenaManager $manager
 	 */
 	public function __construct($position, ArenaManager $manager){
 		$this->position = $position;
@@ -104,7 +102,7 @@ class Arena{
 		}
 		
 		// Fix start time
-		$this->startTime = new DateTime('now');
+		$this->startTime = new \DateTime('now');
 		
 		$player1->sendTip(OneVsOne::getMessage("duel_tip"));
 		$player1->sendMessage(OneVsOne::getMessage("duel_start"));
@@ -132,7 +130,7 @@ class Arena{
 		// Give sword, food and armor
 		$player->getInventory()->addItem(Item::get(ITEM::IRON_SWORD));
 		$player->getInventory()->addItem(Item::get(ITEM::BREAD));
-		$player->getInventory()->setItemInHand(Item::get(ITEM::IRON_SWORD), $player);
+		$player->getInventory()->setItemInHand(Item::get(ITEM::IRON_SWORD));
 		
 		// Pur the armor on the player
 		$player->getInventory()->setHelmet(Item::get(302, 0, 1));

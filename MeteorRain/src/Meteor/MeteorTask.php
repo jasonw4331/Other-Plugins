@@ -14,7 +14,7 @@ class MeteorTask extends PluginTask{
 
 	}
 
-	public function onRun($ticks) {
+	public function onRun(int $ticks) {
 
 		$meteor = $this->m->makeMeteor();
 		if($meteor instanceof Meteor) {

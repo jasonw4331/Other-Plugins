@@ -14,10 +14,10 @@ class DespawnText extends PluginTask {
         $this->eid = $eid;
     }
 
-    public function onRun($tick) {
+    public function onRun(int $tick) {
         $players = $this->getOwner()->getServer()->getOnlinePlayers();
         $pk = new RemoveEntityPacket();
-        $pk->eid = $this->eid;
+        $pk->entityUniqueId = $this->eid;
         foreach ($players as $pl) {
         $pl->directDataPacket($pk);
         }

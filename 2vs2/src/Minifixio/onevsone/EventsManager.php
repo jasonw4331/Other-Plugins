@@ -2,21 +2,14 @@
 
 namespace Minifixio\onevsone;
 
-use Minifixio\onevsone\utils\PluginUtils;
-
-use pocketmine\tile\Tile;
 use pocketmine\item\Item;
 use pocketmine\block\Block;
 use pocketmine\tile\Sign;
 
 use pocketmine\event\Listener;
-use pocketmine\event\entity\EntityDeathEvent;
 use pocketmine\event\player\PlayerDeathEvent;
-use pocketmine\event\entity\EntityDamageByEntityEvent;
-use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerQuitEvent;
 use pocketmine\event\block\SignChangeEvent;
-use pocketmine\utils\TextFormat;
 
 
 /**
@@ -50,7 +43,7 @@ class EventsManager implements Listener{
 		if($event->getBlock()->getID() == Item::SIGN_POST || $event->getBlock()->getID() == Block::SIGN_POST || $event->getBlock()->getID() == Block::WALL_SIGN){
 			$signTile = $event->getPlayer()->getLevel()->getTile($event->getBlock());
 			if(!($signTile instanceof Sign)){
-				return true;
+				return;
 			}
 			$signLines = $event->getLines();
 			if($signLines[0]== OneVsOne::SIGN_TITLE){
@@ -59,7 +52,7 @@ class EventsManager implements Listener{
 					$event->setLine(1,"-Waiting: "  . $this->arenaManager->getNumberOfPlayersInQueue());
 					$event->setLine(2,"-Arenas:" . $this->arenaManager->getNumberOfFreeArenas());
 					$event->setLine(3,"-+===+-");
-					return true;
+					return;
 				}
 			}
 		}

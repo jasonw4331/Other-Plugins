@@ -64,7 +64,8 @@ class Meteor extends Projectile{
 
 		$pk = new AddEntityPacket();
 		$pk->type = 85;
-		$pk->eid = $this->getId();
+		$pk->entityRuntimeId = $this->getId();
+		$pk->entityUniqueId = $this->getId();
 		$pk->x = $this->x;
 		$pk->y = $this->y;
 		$pk->z = $this->z;

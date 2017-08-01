@@ -3,16 +3,12 @@
 namespace Minifixio\onevsone;
 
 use pocketmine\plugin\PluginBase;
+use pocketmine\utils\Config;
+use pocketmine\utils\TextFormat;
 
-use Minifixio\onevsone\ArenaManager;
-use Minifixio\onevsone\EventsManager;
 use Minifixio\onevsone\utils\PluginUtils;
 use Minifixio\onevsone\command\JoinCommand;
 use Minifixio\onevsone\command\ReferenceArenaCommand;
-use pocketmine\utils\Config;
-use pocketmine\utils\TextFormat;
-use pocketmine\Server;
-
 
 class OneVsOne extends PluginBase{
 	
@@ -24,7 +20,7 @@ class OneVsOne extends PluginBase{
 	
 	/** @var Config */
 	public $arenaConfig;
-	
+	/** @var Config $messages */
 	public $messages;
 	
 	CONST SIGN_TITLE = '[2vs2]';
