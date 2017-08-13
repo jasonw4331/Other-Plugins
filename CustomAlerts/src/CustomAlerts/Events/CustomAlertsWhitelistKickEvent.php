@@ -40,4 +40,3 @@ class CustomAlertsWhitelistKickEvent extends PluginEvent {
 		return $this->player;
 	}
 }
-?>

@@ -39,4 +39,3 @@ class CustomAlertsMotdUpdateEvent extends PluginEvent {
 		return $this->pocketminemessage;
 	}
 }
-?>

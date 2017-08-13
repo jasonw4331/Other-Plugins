@@ -54,4 +54,3 @@ class CustomAlertsQuitEvent extends PluginEvent {
 		return $this->pocketminemessage;
 	}
 }
-?>

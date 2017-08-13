@@ -1,0 +1,67 @@
+--- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/ZPlayzMCPE/Other-Plugins
+branches:
+- master
+projects:
+  2vs2:
+    path: 2vs2/
+  AirSneakBoots:
+    path: AirSneakBoots/
+  BanClientId:
+    path: BanClientId/
+  BasketBall:
+    path: BasketBall/
+  BlockTypeCorrector:
+    path: BlockTypeCorrector/
+  BuildZone:
+    path: BuildZone/
+  ChunkLoaders:
+    path: ChunkLoaders/
+  CrateKeys:
+    path: CrateKeys/
+  Cratechest:
+    path: Cratechest/
+  CustomAlerts:
+    path: CustomAlerts/
+  Elytra:
+    path: Elytra/
+  Farms:
+    path: Farms/
+  GlowstoneCircleWorld:
+    path: GlowstoneCircleWorld/
+  Infinity-Stone:
+    path: Infinity-Stone/
+  MeteorRain:
+    path: MeteorRain/
+  MoreCommands:
+    path: MoreCommands/
+  Multi-Inv:
+    path: Multi-Inv/
+  NameTagMods:
+    path: NameTagMods/
+  PeacefulSpawn:
+    path: PeacefulSpawn/
+  PerWorldChat:
+    path: PerWorldChat/
+  PlayerResizer:
+    path: PlayerResizer/
+  PlayersLifetime:
+    path: PlayersLifetime/
+  PrizeCode:
+    path: PrizeCode/
+  RandomEnchant:
+    path: RandomEnchant/
+  SafeFly:
+    path: SafeFly/
+  Sleep4All:
+    path: Sleep4All/
+  VIPfly:
+    path: VIPfly/
+  ViperKits:
+    path: ViperKits/
+  WorldEdit:
+    path: WorldEdit/
+  WorldMerge:
+    path: WorldMerge/
+  WorldShift:
+    path: WorldShift/
+...

@@ -40,4 +40,3 @@ class CustomAlertsOutdatedServerKickEvent extends PluginEvent {
 		return $this->player;
 	}
 }
-?>

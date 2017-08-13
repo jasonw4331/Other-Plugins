@@ -40,4 +40,3 @@ class CustomAlertsFullServerKickEvent extends PluginEvent {
 		return $this->player;
 	}
 }
-?>
