@@ -21,6 +21,7 @@ use pocketmine\plugin\PluginBase;
 use onebone\economyapi\EconomyAPI;
 use pocketmine\block\Chest;
 use pocketmine\utils\Config;
+use pocketmine\utils\TextFormat;
 
 class Main extends PluginBase implements Listener {
 
@@ -33,10 +34,10 @@ class Main extends PluginBase implements Listener {
 
       @mkdir($this->getDataFolder());
 
-      $this->cfg = new Config($this->getDataFolder() ."MysteryCrates.yml", Config::YAML, [ #Menssagem Ao Abrir A Caixa
-          "World" => "ABL",
-          "Msg" => "§l§aSouls Called!§r",
-          "id" => Item::DRAGON_BREATH
+      $this->cfg = new Config($this->getDataFolder() ."MysteryCrates.yml", Config::YAML, [
+          "Msg" => TextFormat::GREEN."Crate Received!",
+          "id" => Item::DRAGON_BREATH,
+          "Money-case25" => "You won the money case!"
       ]);
 
       $this->getServer()->getPluginManager()->registerEvents($this, $this);
@@ -453,7 +454,7 @@ class Main extends PluginBase implements Listener {
                       break;
                   case 25:
                       $item2 = Item::get(264,0,1);
-                      $text = "$". $this->cfg->get("Money-case25") ."";
+                      $text = "$". $this->cfg->get("Money-case25", "");
                       $name = "Chest";
                       $this->spawnItem($block, $item2, $player);
                       $this->spawnOpenChest($player, $block);
@@ -461,7 +462,7 @@ class Main extends PluginBase implements Listener {
                       $this->spawnNamedChest($block, $name);
                       $this->setAllowed($player, false);
                       $player->sendTip($this->cfg->get("Msg"));
-                      EconomyAPI::getInstance()->addMoney($player->getName(), $this->cfg->get("Money-case25"));
+                      EconomyAPI::getInstance()->addMoney($player->getName(), $this->cfg->get("Money-case25", ""));
                       $this->getServer()->getScheduler()->scheduleDelayedTask(new CloseChest($this, $player->getName(), $block), 15 * 3);
                       $this->getServer()->getScheduler()->scheduleDelayedTask(new CoolDown($this, $player->getName()), 15 * 3);
                       break;
