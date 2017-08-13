@@ -7,6 +7,8 @@ use pocketmine\event\player\PlayerEvent;
 use pocketmine\event\Cancellable;
 
 class PlayerCrateKeyRecieveEvent extends PlayerEvent implements Cancellable{
+	public static $handlerList = null;
+
     /** @var Block $source */
     protected $source;
 

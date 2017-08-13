@@ -1,0 +1,9 @@
+name: CombinedSlots
+main: jasonwynn10\CrossOnlineCount\Main
+version: 0.1.0
+api: [3.0.0-ALPHA7]
+load: STARTUP
+author: "jasonwynn10"
+description: "Checks online player counts on other servers and displays via slappers"
+depend:
+ - Slapper

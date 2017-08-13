@@ -8,6 +8,8 @@ use pocketmine\event\Cancellable;
 use pocketmine\item\Item;
 
 class PlayerCrateKeyUseEvent extends PlayerEvent implements Cancellable{
+	public static $handlerList = null;
+
     /** @var  Block $target */
     protected $target;
     /** @var Item $key */

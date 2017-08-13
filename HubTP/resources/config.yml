@@ -1,0 +1,37 @@
+#The name of the lobby world
+Lobby Level: "Lobby"
+
+#The 10 slots in a player's hotbar
+#The item id, meta, and label separated by colons
+#The command to be run by interacting with the item
+Hotbar:
+  slot1:
+    item: "0:0:&aLabel"
+    command: "/help"
+  slot2:
+    item: "0:0:&clabel"
+    command: "/command"
+  slot3:
+    item: "0:0:label"
+    command: "/command"
+  slot4:
+    item: "0:0:label"
+    command: "/command"
+  slot5:
+    item: "0:0:label"
+    command: "/command"
+  slot6:
+    item: "0:0:label"
+    command: "/command"
+  slot7:
+    item: "0:0:label"
+    command: "/command"
+  slot8:
+    item: "0:0:label"
+    command: "/command"
+  slot9:
+    item: "0:0:label"
+    command: "/command"
+  slot10:
+    item: "0:0:label"
+    command: "/command"

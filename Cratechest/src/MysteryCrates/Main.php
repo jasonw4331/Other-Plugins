@@ -24,28 +24,22 @@ use pocketmine\utils\Config;
 
 class Main extends PluginBase implements Listener {
 
-  const NETWORK_ID = 66;
-
   /** @var array $allowed */
   public $allowed = [];
   /** @var Config $cfg */
   public $cfg;
-  /** @var EconomyAPI $eco */
-  public $eco;
 
   public function onEnable() {
 
       @mkdir($this->getDataFolder());
 
       $this->cfg = new Config($this->getDataFolder() ."MysteryCrates.yml", Config::YAML, [ #Menssagem Ao Abrir A Caixa
-          "World" => "ABL", 
-          "Msg" => "§l§aSouls Called!§r", 
-          "id" => 437
+          "World" => "ABL",
+          "Msg" => "§l§aSouls Called!§r",
+          "id" => Item::DRAGON_BREATH
       ]);
 
-      $this->eco = EconomyAPI::getInstance();
-      
-      $this->getServer()->getPluginManager()->registerEvents($this,$this);
+      $this->getServer()->getPluginManager()->registerEvents($this, $this);
   }
     
   public function spawnItem(Chest $chest, Item $item, Player $player){
@@ -72,7 +66,7 @@ class Main extends PluginBase implements Listener {
       $y = $block->getY();
       $z = $block->getZ();
       $pos = new Vector3($x + .5, $y + .5, $z + .5);
-      if($block->getSide(Vector3::SIDE_DOWN)->getId() == 155 and $block->getSide(Vector3::SIDE_DOWN)->getDamage() == 2){
+      if($block->getSide(Vector3::SIDE_DOWN)->getId() == Block::QUARTZ_BLOCK and $block->getSide(Vector3::SIDE_DOWN)->getDamage() == 2){
           if($item->getId() == 288 and $item->getDamage() == 0 and $item->getCustomName() == "key"){
               $reward = rand(1,25);
               switch($reward){
@@ -128,20 +122,20 @@ class Main extends PluginBase implements Listener {
                       $this->getServer()->getScheduler()->scheduleDelayedTask(new CloseChest($this, $player->getName(), $block), 15 * 3);
                       $this->getServer()->getScheduler()->scheduleDelayedTask(new CoolDown($this, $player->getName()), 15 * 3);
                       break;
-                      case 4:
-                          $item2 = Item::get(466,0,1);
-                          $text = "Enchanted Golden Apple 3x";
-                          $name = "Chest";
-                          $this->spawnItem($block, $item2, $player);
-                          $this->spawnOpenChest($player, $block);
-                          $this->spawnNamedText($block, $player, $text);
-                          $this->spawnNamedChest($block, $name);
-                          $this->setAllowed($player, false);
-                          $player->sendTip($this->cfg->get("Msg"));
-                          $player->getInventory()->addItem($item2);
-                          $player->getInventory()->addItem(Item::get(466,0,2));
-                          $this->getServer()->getScheduler()->scheduleDelayedTask(new CloseChest($this, $player->getName(), $block), 15 * 3);
-                          $this->getServer()->getScheduler()->scheduleDelayedTask(new CoolDown($this, $player->getName()), 15 * 3);
+	              case 4:
+		              $item2 = Item::get(466,0,1);
+		              $text = "Enchanted Golden Apple 3x";
+		              $name = "Chest";
+		              $this->spawnItem($block, $item2, $player);
+		              $this->spawnOpenChest($player, $block);
+		              $this->spawnNamedText($block, $player, $text);
+		              $this->spawnNamedChest($block, $name);
+		              $this->setAllowed($player, false);
+		              $player->sendTip($this->cfg->get("Msg"));
+		              $player->getInventory()->addItem($item2);
+		              $player->getInventory()->addItem(Item::get(466,0,2));
+		              $this->getServer()->getScheduler()->scheduleDelayedTask(new CloseChest($this, $player->getName(), $block), 15 * 3);
+		              $this->getServer()->getScheduler()->scheduleDelayedTask(new CoolDown($this, $player->getName()), 15 * 3);
                           break;
                   case 5:
                       $item2 = Item::get(466,0,1);
@@ -397,21 +391,21 @@ class Main extends PluginBase implements Listener {
                       $this->getServer()->getScheduler()->scheduleDelayedTask(new CloseChest($this, $player->getName(), $block), 15 * 3);
                       $this->getServer()->getScheduler()->scheduleDelayedTask(new CoolDown($this, $player->getName()), 15 * 3);
                       break;
-                      case 21:
-                          $item2 = Item::get(3,0,1);
-                          $text = "Dirt x64";
-                          $name = "Chest";
-                          $this->spawnItem($block, $item2, $player);
-                          $this->spawnOpenChest($player, $block);
-                          $this->spawnNamedText($block, $player, $text);
-                          $this->spawnNamedChest($block, $name);
-                          $this->setAllowed($player, false);
-                          $player->sendTip($this->cfg->get("Msg"));
-                          $player->getInventory()->addItem($item2);
-                          $player->getInventory()->addItem(Item::get(3,0,63));
-                          $this->getServer()->getScheduler()->scheduleDelayedTask(new CloseChest($this, $player->getName(), $block), 15 * 3);
-                          $this->getServer()->getScheduler()->scheduleDelayedTask(new CoolDown($this, $player->getName()), 15 * 3);
-                          break;
+	              case 21:
+		              $item2 = Item::get(3,0,1);
+		              $text = "Dirt x64";
+		              $name = "Chest";
+		              $this->spawnItem($block, $item2, $player);
+		              $this->spawnOpenChest($player, $block);
+		              $this->spawnNamedText($block, $player, $text);
+		              $this->spawnNamedChest($block, $name);
+		              $this->setAllowed($player, false);
+		              $player->sendTip($this->cfg->get("Msg"));
+		              $player->getInventory()->addItem($item2);
+		              $player->getInventory()->addItem(Item::get(3,0,63));
+		              $this->getServer()->getScheduler()->scheduleDelayedTask(new CloseChest($this, $player->getName(), $block), 15 * 3);
+		              $this->getServer()->getScheduler()->scheduleDelayedTask(new CoolDown($this, $player->getName()), 15 * 3);
+		              break;
                   case 22:
                       $item2 = Item::get(42,0,1);
                       $text = "Iron Block x32";
@@ -467,12 +461,12 @@ class Main extends PluginBase implements Listener {
                       $this->spawnNamedChest($block, $name);
                       $this->setAllowed($player, false);
                       $player->sendTip($this->cfg->get("Msg"));
-                      $this->eco->addMoney($player->getName(), $this->cfg->get("Money-case25"));
+                      EconomyAPI::getInstance()->addMoney($player->getName(), $this->cfg->get("Money-case25"));
                       $this->getServer()->getScheduler()->scheduleDelayedTask(new CloseChest($this, $player->getName(), $block), 15 * 3);
                       $this->getServer()->getScheduler()->scheduleDelayedTask(new CoolDown($this, $player->getName()), 15 * 3);
                       break;
               }
-              $b = Block::get(201);
+              $b = Block::get(Block::PURPUR_BLOCK);
               $item->setCount($item->getCount() - 1);
               $player->getInventory()->setItem($player->getInventory()->getHeldItemSlot(), $item);
               $level->addSound(new GhastSound($player));
@@ -512,7 +506,7 @@ class Main extends PluginBase implements Listener {
   public function spawnNamedText(Chest $chest, Player $player, String $text){
     $pk = new AddEntityPacket();
     $pk->entityRuntimeId = Entity::$entityCount++;
-    $pk->type = self::NETWORK_ID;
+    $pk->type = 66;
     $pk->x = $chest->getX() + 0.5;
     $pk->y = $chest->getY();
     $pk->z = $chest->getZ() + 0.5;
@@ -520,8 +514,8 @@ class Main extends PluginBase implements Listener {
     $pk->pitch = 0;
     $pk->metadata = [
         2 => [4, "§7" . $text ],
-        15 => [2, 0],
-        ];
+        15 => [2, 0]
+    ];
     $player->dataPacket($pk);
     $this->getServer()->getScheduler()->scheduleDelayedTask(new DespawnText($this, $pk->entityRuntimeId), 15 * 3);
   }
@@ -550,12 +544,5 @@ class Main extends PluginBase implements Listener {
   public function onJoin(PlayerJoinEvent $event){
     $player = $event->getPlayer();
     $this->setAllowed($player, true);
-  }
-
-  public function getItem() {
-      $arr = explode(":", $this->cfg->get("id", ""));
-      $id = $arr[0];
-      $meta = isset($arr[1]) ? $arr[1] : 0;
-      return "{{$id}:{$meta}}";
   }
 }

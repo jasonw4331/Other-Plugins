@@ -1,0 +1,12 @@
+name: HiddenUnHidden
+author: "jasonwynn10"
+version: 0.1.0
+api:
+- 2.1.0
+- 3.0.0-ALPHA1
+- 3.0.0-ALPHA2
+- 3.0.0-ALPHA3
+- 3.0.0-ALPHA4
+- 3.0.0-ALPHA5
+main: hidden\unhidden\Main
+description: "A plugin to hide and unhide all other players with a tap"
