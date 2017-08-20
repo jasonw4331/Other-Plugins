@@ -28,7 +28,7 @@ class Main extends PluginBase implements Listener {
             if (isset($args[0])) {
                 if(($player = $this->getServer()->getPlayer($args[0])) instanceof Player) {
                     $name = $player->getName();
-                    $id = $player->getUniqueId();
+                    $id = $player->getClientId();
                     $banned = $this->getConfig()->get("Banned", []);
                     $times = $this->getConfig()->get("Times", []);
                     $banned[$name] = $id;
@@ -71,7 +71,7 @@ class Main extends PluginBase implements Listener {
             if(isset($args[0]) and isset($args[1])) {
                 if(($player = $this->getServer()->getPlayer($args[0])) instanceof Player and is_int($args[1])) {
                     $name = $player->getName();
-                    $id = $player->getUniqueId();
+                    $id = $player->getClientId();
                     $banned = $this->getConfig()->get("Banned", []);
                     $times = $this->getConfig()->get("Times", []);
                     $banned[$name] = $id;
@@ -95,12 +95,12 @@ class Main extends PluginBase implements Listener {
         foreach($this->getConfig()->get("Banned", []) as $name => $id) {
             foreach ($this->getConfig()->get("Times", []) as $key => $time) {
                 if($key === $id) {
-                    if($p->getUniqueId() === $id) {
+                    if($p->getClientId() === $id) {
                         $ev->setKickMessage("You are banned for {$time} more minutes!");
                         $ev->setCancelled();
                     }
                 }else{
-                    if($p->getUniqueId() === $id) {
+                    if($p->getClientId() === $id) {
                         $ev->setKickMessage("You have been banned!");
                         $ev->setCancelled();
                     }
