@@ -1,0 +1,13 @@
+name: WarpPads
+authors:
+ - XFuryMCPE
+ - jasonwynn10
+description: "Walk on a block to warp to another block!"
+version: 1.1.0
+main: WarpPads\MainClass
+api:
+ - 3.0.0-ALPHA7
+permissions:
+ warppads.op:
+  description: "Use of all warp block functionalities"
+  default: op
