@@ -1,0 +1,10 @@
+name: LateCommands
+main: jasonwynn10\l8cmds\Main
+version: 0.1.0
+api:
+ - 3.0.0-ALPHA7
+author: jasonwynn10
+description: "A plugin for running commands late"
+permissions:
+  LateCmds:
+    default: true
