@@ -23,12 +23,12 @@ class Main extends PluginBase {
         $this->lang = new Config($this->getDataFolder()."messages.yml", Config::YAML,
             [
                 "incorrect-pattern" => "The chest must be standing on {PATTERNBLOCK} for the key to work",
-                "key-recieve-message" => "You've recieved a Crate Key.",
-                "key-recieve-broadcast-message" => "{PLAYER} Found a Crate Key.",
+                "key-receive-message" => "You've received a Crate Key.",
+                "key-receive-broadcast-message" => "{PLAYER} Found a Crate Key.",
                 "key-use-message" => "You have opened chest with Crate Key.",
                 "occupied-chest" => "The chest must be empty when in use",
                 "no-permission-for-use" => "You dont have permission to use Crate Keys",
-                "no-permission-for-recieve" => "You dont have permission to recieve Crate Keys",
+                "no-permission-for-receive" => "You dont have permission to receive Crate Keys",
                 "crate-chest-created" => "You have created a Crate Chest.",
                 "no-permission-for-crate-chest-create" => "You dont have permission to create Crate Chest",
                 "cant-open-double-chest" => "You cannot use Crate Key on double chests"

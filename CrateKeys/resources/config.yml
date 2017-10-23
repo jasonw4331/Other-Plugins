@@ -2,7 +2,7 @@
 # Particle Scale Level
 particle-scale: 8
 # Enable player Crate Key Recieve SmokeParticle spawned in source block pos
-enable-key-recieve-particle: true
+enable-key-receive-particle: true
 # Enable player Crate Key Use SmokeParticle spawned in opened chest pos
 enable-key-use-particle: true
 # Enable player Crate Chest Create SmokeParticle spawned in placed chest pos

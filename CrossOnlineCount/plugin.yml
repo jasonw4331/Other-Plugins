@@ -4,6 +4,6 @@ version: 0.1.0
 api: [3.0.0-ALPHA7]
 load: STARTUP
 author: "jasonwynn10"
-description: "Checks online player counts on other servers and displays via slappers"
+description: "A PocketMine plugin which checks other servers for online players and displays THE INFORMATIONvia slappers"
 depend:
  - Slapper

@@ -68,8 +68,8 @@ class EventListener implements Listener {
         $b = $e->getBlock();
         if(array_key_exists($b->getId(), $this->sourceBlocks)) {
             if($this->plugin->getChance($this->plugin->getConfig()->get('chance'))) {
-                if(!$p->hasPermission('cratekeys.recieve')) {
-                    $p->sendMessage($this->plugin->getLang('no-permission-for-recieve'));
+                if(!$p->hasPermission('cratekeys.receive')) {
+                    $p->sendMessage($this->plugin->getLang('no-permission-for-receive'));
                     return;
                 }
                 $this->plugin->getServer()->getPluginManager()->callEvent(new PlayerCrateKeyRecieveEvent($p, $b));
@@ -103,9 +103,9 @@ class EventListener implements Listener {
         // DONT ALLOW GIVE KEYS TO CREATIVE PLAYERS
         if($p->getGamemode() == 1)
             return;
-        $p->sendMessage($this->plugin->getLang('key-recieve-message'));
+        $p->sendMessage($this->plugin->getLang('key-receive-message'));
         if($this->plugin->getConfig()->get('broadcast-message-on-key-recieve'))
-            $this->plugin->getServer()->broadcastMessage($this->plugin->getLang('key-recieve-broadcast-message'));
+            $this->plugin->getServer()->broadcastMessage($this->plugin->getLang('key-receive-broadcast-message'));
         // GIVE PLAYER KEY
         $key = Item::get($this->plugin->getConfig()->get('key-id'), 0 ,1);
         $e->getPlayer()->getInventory()->addItem($key);

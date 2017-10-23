@@ -1,0 +1,34 @@
+<?php
+namespace jasonwynn10\NoPvpFlight;
+
+use pocketmine\plugin\PluginBase;
+use pocketmine\event\Listener;
+use pocketmine\event\entity\EntityDamageEvent;
+use pocketmine\event\entity\EntityDamageByEntityEvent;
+use pocketmine\Player;
+
+class Main extends PluginBase implements Listener {
+	/** @var string[] $players */
+    private $players = [];
+	public function onEnable() {
+		$this->getServer()->getPluginManager()->registerEvents($this, $this);
+	}
+	public function onEntityDamage(EntityDamageEvent $event) {
+		if($event instanceof EntityDamageByEntityEvent) {
+			$damager = $event->getDamager();
+     		$damaged = $event->getEntity();
+            if($damaged instanceof Player and !$damaged->hasPermission("pvp.fly") and $damager instanceof Player) {
+            	$damaged->setFlying(false);
+			}
+		}
+	}
+	public function addPlayer(Player $player) {
+		$this->players[$player->getName()] = $player->getName();
+	}
+	public function isPlayer(Player $player) {
+		return in_array($player->getName(), $this->players);
+	}
+	public function removePlayer(Player $player) {
+		unset($this->players[$player->getName()]);
+	}
+}
