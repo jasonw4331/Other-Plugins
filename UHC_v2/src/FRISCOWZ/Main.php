@@ -241,9 +241,14 @@ class Main extends PluginBase implements Listener {
 						$p->getInventory()->sendArmorContents($p);
 					}
 					$this->getServer()->broadcastMessage("§7[§bUHC§7] §7¡UHC que comienza en 10 segundos! §cNO Se Valla.");
-					sleep(10); //TODO WHY THE HECK IS THIS HERE
-					$this->getServer()->broadcastMessage("§7[§bUHC§7] §7¡El UHC ha comenzado!");
-
+					$this->getServer()->getScheduler()->scheduleDelayedTask(new class($this) extends PluginTask{
+						/**
+						 * @param int $currentTick
+						 */
+						public function onRun(int $currentTick){
+							$this->getOwner()->getServer()->broadcastMessage("§7[§bUHC§7] §7¡El UHC ha comenzado!");
+						}
+					}, 20 * 10);
 					return true;
 					break;
 				case "meetop":
@@ -327,7 +332,6 @@ class Main extends PluginBase implements Listener {
 		}else{
 			$sender->sendMessage("§7[§bUHC§7] §cNo tienes permitido hacer esto.");
 		}
-
 		return true;
 	}
 
