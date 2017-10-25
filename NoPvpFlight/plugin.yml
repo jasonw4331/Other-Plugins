@@ -1,12 +1,12 @@
 name: NoPvpFlight
+main: jasonwynn10\NoPvpFlight\Main
 author: jasonwynn10
 version: 0.1.0
 api:
  - 3.0.0
  - 3.0.0-ALPHA8
  - 3.0.0-ALPHA9
-description: "Stops a player's flight when they take damage"
-main: jasonwynn10\NoPvpFlight\Main
+description: "Stops a player's flight when they are attacked"
 permissions:
   pvp.fly:
     default: op

@@ -1,0 +1,26 @@
+name: UHC
+main: FRISCOWZ\Main
+api: [1.10.0]
+version: 3.0
+author: Myriad Developer Team
+commands:
+ uhc:
+  descriptions: 
+  permission: uhc.cmd
+permissions:
+  UHC.group.Host:
+    default: false
+  UHC.group.Owner:
+    default: false
+  UHC.group.Admin:
+    default: false
+  UHC.group.Mod:
+    default: false
+  UHC.group.Dev:
+    default: false
+  UHC.group.Trainee:
+    default: false
+  UHC.group.Helper:
+    default: false
+  UHC.group.YouTube:
+    default: false
