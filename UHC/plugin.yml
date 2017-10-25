@@ -1,6 +1,9 @@
 name: UHC
 main: FRISCOWZ\Main
-api: [1.10.0]
+api:
+- 3.0.0
+- 3.0.0-ALPHA8
+- 3.0.0-ALPHA9
 version: 3.0
 author: Myriad Developer Team
 commands:
