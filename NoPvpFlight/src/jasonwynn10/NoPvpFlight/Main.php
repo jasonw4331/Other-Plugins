@@ -1,11 +1,11 @@
 <?php
 namespace jasonwynn10\NoPvpFlight;
 
-use pocketmine\plugin\PluginBase;
-use pocketmine\event\Listener;
-use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
+use pocketmine\event\entity\EntityDamageEvent;
+use pocketmine\event\Listener;
 use pocketmine\Player;
+use pocketmine\plugin\PluginBase;
 
 class Main extends PluginBase implements Listener {
 	/** @var string[] $players */
@@ -19,6 +19,7 @@ class Main extends PluginBase implements Listener {
      		$damaged = $event->getEntity();
             if($damaged instanceof Player and !$damaged->hasPermission("pvp.fly") and $damager instanceof Player) {
             	$damaged->setFlying(false);
+            	$damaged->setAllowFlight(false);
 			}
 		}
 	}
