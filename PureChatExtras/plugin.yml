@@ -1,0 +1,10 @@
+name: PureChatExtras
+main: jasonwynn10\pce\PureChatExtras
+version: 0.1.0
+api:
+ - 3.0.0
+ - 3.0.0-ALPHA9
+author: "jasonwynn10"
+description: "Modifies the setsuffix and setprefix command from Purechat to allow setting other players tags"
+depend:
+ - PureChat
