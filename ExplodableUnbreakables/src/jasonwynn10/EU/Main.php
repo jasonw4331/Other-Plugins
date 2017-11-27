@@ -29,32 +29,41 @@ class Main extends PluginBase implements Listener {
 		}, true);
 		@mkdir($this->getDataFolder());
 		new Config($this->getDataFolder()."config.yml", Config::YAML,[
-			"TNT-count" => 4
+			"Bedrock-count" => 4,
+			"Obsidian-count" => 4
 		]);
 		$this->getConfig()->reload();
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 	}
 	public function onExplode(EntityExplodeEvent $ev) {
 		$entity = $ev->getEntity();
-		var_dump($this->blocks);
 		if($entity instanceof PrimedTNT) {
 			$ev->setBlockList(array_filter($ev->getBlockList(), function(Block $block) {
 				if($block->getId() !== Block::BEDROCK and $block->getId() !== Block::OBSIDIAN)
 					return true;
-				if($this->getConfig()->get("TNT-count", 4) <= 0)
-					return false;
 				$hash = Level::blockHash($block->x, $block->y, $block->z);
-				if(isset($this->blocks[$hash]) and ($this->getConfig()->get("TNT-count", 4) === 1 or $this->blocks[$hash] >= (int) $this->getConfig()->get("TNT-count", 4))) {
-					unset($this->blocks[$hash]);
-					return true;
-				}elseif(!isset($this->blocks[$hash])) {
-					$this->blocks[$hash] = 1;
+				if($block->getId() === Block::BEDROCK) {
+					if(isset($this->blocks[$hash]) and ($this->getConfig()->get("Bedrock-count", 4) === 1 or $this->blocks[$hash] >= (int) $this->getConfig()->get("Bedrock-count", 4))) {
+						unset($this->blocks[$hash]);
+						return true;
+					}elseif(!isset($this->blocks[$hash])) {
+						$this->blocks[$hash] = 1;
+					}else{
+						$this->blocks[$hash]++;
+					}
 				}else{
-					$this->blocks[$hash]++;
+					if(isset($this->blocks[$hash]) and ($this->getConfig()->get("Obsidian-count", 4) === 1 or $this->blocks[$hash] >= (int) $this->getConfig()->get("Obsidian-count", 4))) {
+						unset($this->blocks[$hash]);
+						return true;
+					}elseif(!isset($this->blocks[$hash])) {
+						$this->blocks[$hash] = 1;
+					}else{
+						$this->blocks[$hash]++;
+					}
 				}
 				return false;
 			}));
-		}else{
+		}else{ // dont let creepers blow up obsidian or bedrock
 			$ev->setBlockList(array_filter($ev->getBlockList(), function(Block $block) {
 				return $block->getId() !== Block::BEDROCK and $block !== Block::OBSIDIAN;
 			}));
