@@ -1,0 +1,8 @@
+name: ExplodingUnbreakables
+main: jasonwynn10\EU\Main
+version: 0.1.0
+api:
+ - 3.0.0
+ - 3.0.0-ALPHA9
+description: "A plugin which allows for bedrock to be blown up after tnt explodes a certain number of times"
+author: "jasonwynn10"
