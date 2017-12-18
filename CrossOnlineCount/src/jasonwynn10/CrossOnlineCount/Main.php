@@ -1,16 +1,13 @@
 <?php
 namespace jasonwynn10\CrossOnlineCount;
 
-use pocketmine\event\Listener;
-use pocketmine\nbt\tag\StringTag;
-use pocketmine\plugin\PluginBase;
-use pocketmine\utils\TextFormat;
-
-use slapper\events\SlapperCreationEvent;
-use slapper\events\SlapperDeletionEvent;
-
 use libpmquery\PMQuery;
 use libpmquery\PmQueryException;
+use pocketmine\event\Listener;
+use pocketmine\plugin\PluginBase;
+use pocketmine\utils\TextFormat;
+use slapper\events\SlapperCreationEvent;
+use slapper\events\SlapperDeletionEvent;
 use spoondetector\SpoonDetector;
 
 class Main extends PluginBase implements Listener {
@@ -43,7 +40,7 @@ class Main extends PluginBase implements Listener {
 		$entity = $ev->getEntity();
 		$lines = explode("\n", $entity->getNameTag());
 		if($this->isValidIP($lines[0]) or $this->is_valid_domain_name($lines[0])) {
-			$entity->namedtag->server = new StringTag("server", $lines[0]);
+			$entity->namedtag->setString("server", $lines[0]);
 			$this->update();
 		}
 	}
@@ -55,8 +52,8 @@ class Main extends PluginBase implements Listener {
 	 */
 	public function onSlapperDelete(SlapperDeletionEvent $ev) {
 		$entity = $ev->getEntity();
-		if(isset($entity->namedtag->server)) {
-			unset($entity->namedtag->server);
+		if($entity->namedtag->getString("server")) {
+			$entity->namedtag->removeTag("server");
 		}
 	}
 
@@ -66,10 +63,10 @@ class Main extends PluginBase implements Listener {
 	public function update() {
 		foreach($this->getServer()->getLevels() as $level) {
 			foreach($level->getEntities() as $entity) {
-				if(isset($entity->namedtag->server)) {
-					$server = explode(":", $entity->namedtag->server->getValue());
+				if($entity->namedtag->getString("server")) {
+					$server = explode(":", $entity->namedtag->getString("server",""));
 					try {
-						$queryData = PMQuery::query($server[0], $server[1]);
+						$queryData = PMQuery::query($server[0], $server[1]); //TODO make async
 						$online = (int) $queryData['num'];
 
 						$lines = explode("\n", $entity->getNameTag());
