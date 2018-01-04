@@ -21,9 +21,9 @@ class Main extends PluginBase implements Listener {
 	public function onDisable() {
 		foreach($this->getServer()->getLevels() as $level) {
 			foreach($level->getEntities() as $entity) {
-				if(isset($entity->namedtag->server)) {
+				if($entity->namedtag->getString("server")) {
 					$lines = explode("\n", $entity->getNameTag());
-					$lines[0] = $entity->namedtag->server->getValue();
+					$lines[0] = $entity->namedtag->getString("server", "");
 					$nametag = implode("\n", $lines);
 					$entity->setNameTag($nametag);
 				}
