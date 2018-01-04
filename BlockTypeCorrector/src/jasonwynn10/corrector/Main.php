@@ -76,29 +76,8 @@ class Main extends pluginBase implements Listener {
 			case 126:
 				$replace = Block::get(Block::WOODEN_SLAB, $block->getDamage());
 			break;
-			case 95:
-				$replace = Block::get(Block::GLASS);
-			break;
-			case 160:
-				$replace = Block::get(Block::GLASS_PANE);
-			break;
 			case 125:
 				$replace = Block::get(Block::DOUBLE_WOODEN_SLAB, $block->getDamage());
-			break;
-			case 188:
-				$replace = Block::get(Block::FENCE, 1);
-			break;
-			case 189:
-				$replace = Block::get(Block::FENCE, 2);
-			break;
-			case 190:
-				$replace = Block::get(Block::FENCE, 3);
-			break;
-			case 191:
-				$replace = Block::get(Block::FENCE, 5);
-			break;
-			case 192:
-				$replace = Block::get(Block::FENCE, 4);
 			break;
 			default:
 			break;
