@@ -1,0 +1,87 @@
+--- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/jasonwynn10/Other-Plugins
+branches:
+- master
+projects:
+  2vs2:
+    path: 2vs2/
+  AirSneakBoots:
+    path: AirSneakBoots/
+  BanClientId:
+    path: BanClientId/
+  BasketBall:
+    path: BasketBall/
+  BlockTypeCorrector:
+    path: BlockTypeCorrector/
+  BuildZone:
+    path: BuildZone/
+  ChunkLoaders:
+    path: ChunkLoaders/
+  CrateKeys:
+    path: CrateKeys/
+  Cratechest:
+    path: Cratechest/
+  CrossOnlineCount:
+    path: CrossOnlineCount/
+  CustomAlerts:
+    path: CustomAlerts/
+  Elytra:
+    path: Elytra/
+  ExplodableUnbreakables:
+    path: ExplodableUnbreakables/
+  Farms:
+    path: Farms/
+  GlowstoneCircleWorld:
+    path: GlowstoneCircleWorld/
+  HiddenUnHidden:
+    path: HiddenUnHidden/
+  HubTP:
+    path: HubTP/
+  Infinity-Stone:
+    path: Infinity-Stone/
+  LateCommands:
+    path: LateCommands/
+  MeteorRain:
+    path: MeteorRain/
+  MoreCommands:
+    path: MoreCommands/
+  Multi-Inv:
+    path: Multi-Inv/
+  NameTagMods:
+    path: NameTagMods/
+  NoPvpFlight:
+    path: NoPvpFlight/
+  PeacefulSpawn:
+    path: PeacefulSpawn/
+  PerWorldChat:
+    path: PerWorldChat/
+  PlayerResizer:
+    path: PlayerResizer/
+  PlayersLifetime:
+    path: PlayersLifetime/
+  PrizeCode:
+    path: PrizeCode/
+  PureChatExtras:
+    path: PureChatExtras/
+  RandomEnchant:
+    path: RandomEnchant/
+  SafeFly:
+    path: SafeFly/
+  Sleep4All:
+    path: Sleep4All/
+  TimeCommander:
+    path: TimeCommander/
+  UHC:
+    path: UHC/
+  VIPfly:
+    path: VIPfly/
+  ViperKits:
+    path: ViperKits/
+  WarpPads:
+    path: WarpPads/
+  WorldEdit:
+    path: WorldEdit/
+  WorldMerge:
+    path: WorldMerge/
+  WorldShift:
+    path: WorldShift/
+...
