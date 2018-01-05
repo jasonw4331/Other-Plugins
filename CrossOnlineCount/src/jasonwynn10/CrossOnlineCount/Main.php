@@ -21,7 +21,7 @@ class Main extends PluginBase implements Listener {
 	public function onDisable() {
 		foreach($this->getServer()->getLevels() as $level) {
 			foreach($level->getEntities() as $entity) {
-				if($entity->namedtag->getString("server")) {
+				if(!empty($entity->namedtag->getString("server", ""))) {
 					$lines = explode("\n", $entity->getNameTag());
 					$lines[0] = $entity->namedtag->getString("server", "");
 					$nametag = implode("\n", $lines);
@@ -52,7 +52,7 @@ class Main extends PluginBase implements Listener {
 	 */
 	public function onSlapperDelete(SlapperDeletionEvent $ev) {
 		$entity = $ev->getEntity();
-		if($entity->namedtag->getString("server")) {
+		if(!empty($entity->namedtag->getString("server", ""))) {
 			$entity->namedtag->removeTag("server");
 		}
 	}
@@ -63,8 +63,8 @@ class Main extends PluginBase implements Listener {
 	public function update() {
 		foreach($this->getServer()->getLevels() as $level) {
 			foreach($level->getEntities() as $entity) {
-				if($entity->namedtag->getString("server")) {
-					$server = explode(":", $entity->namedtag->getString("server",""));
+				if(!empty($entity->namedtag->getString("server", ""))) {
+					$server = explode(":", $entity->namedtag->getString("server", ""));
 					try {
 						$queryData = PMQuery::query($server[0], $server[1]); //TODO make async
 						$online = (int) $queryData['num'];
