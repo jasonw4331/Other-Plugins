@@ -3,7 +3,7 @@ author: "jasonwynn10"
 version: 0.1.0
 api:
  - 3.0.0
- - 3.0.0-ALPHA7
+ - 3.0.0-ALPHA10
 main: jasonwynn10\Main
 description: "A plugin that allows banning client Ids"
 commands:
