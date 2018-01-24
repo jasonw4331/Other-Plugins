@@ -20,6 +20,11 @@ projects:
     path: Cratechest/
   CrossOnlineCount:
     path: CrossOnlineCount/
+    libs:
+      - src: Falkirks/spoondetector/spoondetector
+        version: ^0.0.0
+      - src: jasonwynn10/libpmquery/libpmquery
+        version: ^0.0.1
   CustomAlerts:
     path: CustomAlerts/
   Elytra:
