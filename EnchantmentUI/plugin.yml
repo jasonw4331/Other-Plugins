@@ -2,7 +2,16 @@ name: EnchantmentUI
 main: jasonwynn10\EnchUI\Main
 version: 0.1.0
 api: 3.0.0-ALPHA11
-description: "A commissioned Enchantment shop plugin"
+description: "A commissioned Enchantment Shop plugin"
 author: "jasonwynn10"
 depend:
-- FormAPI
+ - FormAPI
+commands:
+  enchantmentshop:
+    description: "Opens the Enchantment Shop"
+    permission: "enchantmentshop.cmd"
+    usage: "/enchshop"
+    alias: ["enchshop"]
+permissions:
+  enchantmentshop.cmd:
+    default: true

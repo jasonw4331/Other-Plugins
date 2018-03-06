@@ -3,8 +3,11 @@ declare(strict_types=1);
 namespace jasonwynn10\EnchUI;
 
 use jojoe77777\FormAPI\FormAPI;
+use jojoe77777\FormAPI\SimpleForm;
 use onebone\economyapi\EconomyAPI;
 use PiggyCustomEnchants\CustomEnchants\CustomEnchants;
+use pocketmine\command\Command;
+use pocketmine\command\CommandSender;
 use pocketmine\event\Listener;
 use pocketmine\item\enchantment\Enchantment;
 use pocketmine\item\enchantment\EnchantmentInstance;
@@ -13,6 +16,9 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\Server;
 
 class Main extends PluginBase implements Listener {
+	/** @var SimpleForm $form */
+	private $form;
+
 	public function onEnable() {
 		$dataStore = [];
 
@@ -38,8 +44,7 @@ class Main extends PluginBase implements Listener {
 					$form = $formsAPI->createSimpleForm();
 					$form->setTitle("Enchantment Shop");
 					$form->setContent("You don't have enough money to buy that!");
-				}
-				else {
+				}else {
 					$form = $formsAPI->createModalForm(function(Player $player, $data) use (&$dataStore) {
 
 						var_dump($data); //TODO remove
@@ -67,5 +72,13 @@ class Main extends PluginBase implements Listener {
 		foreach($enchantments as $enchantment) {
 			$form->addButton($enchantment->getName());
 		}
+		$this->form = $form;
+	}
+
+	public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool {
+		if($sender instanceof Player) {
+			$this->form->sendToPlayer($sender);
+		}
+		return true;
 	}
 }
