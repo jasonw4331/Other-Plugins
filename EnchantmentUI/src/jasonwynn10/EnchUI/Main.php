@@ -3,7 +3,6 @@ declare(strict_types=1);
 namespace jasonwynn10\EnchUI;
 
 use jojoe77777\FormAPI\FormAPI;
-use jojoe77777\FormAPI\SimpleForm;
 use onebone\economyapi\EconomyAPI;
 use PiggyCustomEnchants\CustomEnchants\CustomEnchants;
 use pocketmine\command\Command;
@@ -14,71 +13,135 @@ use pocketmine\item\enchantment\EnchantmentInstance;
 use pocketmine\Player;
 use pocketmine\plugin\PluginBase;
 use pocketmine\Server;
+use pocketmine\utils\TextFormat;
 
 class Main extends PluginBase implements Listener {
-	/** @var SimpleForm $form */
-	private $form;
+	/** @var array $dataStore */
+	private static $dataStore = [];
 
-	public function onEnable() {
-		$dataStore = [];
+	/**
+	 * @param CommandSender $sender
+	 * @param Command $command
+	 * @param string $label
+	 * @param array $args
+	 *
+	 * @return bool
+	 * @throws \ReflectionException
+	 */
+	public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool {
+		if($sender instanceof Player) {
+			self::createPlayerDataStore($sender);
 
-		/** @var FormAPI $formsAPI */
-		$formsAPI = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
-		$form = $formsAPI->createSimpleForm(function(Player $player, $data) use (&$dataStore) {
-
-			$dataStore[$player->getName()][] = $data[0];
+			/** @noinspection PhpUnhandledExceptionInspection */
+			$class = new \ReflectionClass(CustomEnchants::class);
+			/** @var Enchantment[] $enchantments */
+			$enchantments = $class->getStaticProperties()['enchantments'];
+			$enchantments = array_unique(array_filter($enchantments), SORT_REGULAR);
 
 			/** @var FormAPI $formsAPI */
-			$formsAPI = Server::getInstance()->getPluginManager()->getPlugin("FormAPI");
-			$form = $formsAPI->createCustomForm(function(Player $player, $data) use (&$dataStore) {
-
-				var_dump($data); //TODO remove
-				$dataStore[$player->getName()][] = (int) $data[""];
+			$formsAPI = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
+			$form = $formsAPI->createSimpleForm(function(Player $player, $data) use ($enchantments) {
+				$i = 0;
+				foreach($enchantments as $enchantment) {
+					if($i === $data) {
+						$dataStore = Main::getFromDataStore($player);
+						$dataStore[] = $enchantment->getId();
+						Main::setToDataStore($player, $dataStore);
+						break;
+					}
+					$i++;
+				}
 
 				/** @var FormAPI $formsAPI */
 				$formsAPI = Server::getInstance()->getPluginManager()->getPlugin("FormAPI");
+				$form = $formsAPI->createCustomForm(function(Player $player, $data) {
 
-				$economy = EconomyAPI::getInstance();
-				$money = $economy->myMoney($player);
-				if($money - $dataStore[$player->getName()][3] < 0) {
-					$form = $formsAPI->createSimpleForm();
-					$form->setTitle("Enchantment Shop");
-					$form->setContent("You don't have enough money to buy that!");
-				}else {
-					$form = $formsAPI->createModalForm(function(Player $player, $data) use (&$dataStore) {
+					$dataStore = Main::getFromDataStore($player);
+					$dataStore[] = (int) $data[0];
+					$dataStore[] = (int) (((int) $data[0]) * 5000000);
+					Main::setToDataStore($player, $dataStore);
+					/** @var FormAPI $formsAPI */
+					$formsAPI = Server::getInstance()->getPluginManager()->getPlugin("FormAPI");
 
-						var_dump($data); //TODO remove
-						if($data) {
-							$economy = EconomyAPI::getInstance();
-							$economy->reduceMoney($player, $dataStore[$player->getName()][2], false, "EnchantmentShop");
-							$player->getInventory()->getItemInHand()->addEnchantment(new EnchantmentInstance(CustomEnchants::getEnchantmentByName($dataStore[$player->getName()][0]), $dataStore[$player->getName()][1]));
-						}
-					});
-					$form->setTitle("Enchantment Shop");
-					$form->setContent("Do you accept your charge of " . $economy->getConfig()->get("monetary-unit", "$") . $dataStore[$player->getName()][2] . "?");
-				}
+					$economy = EconomyAPI::getInstance();
+					$money = $economy->myMoney($player);
+					if($money - $dataStore[2] < 0) {
+						$form = $formsAPI->createCustomForm();
+						$form->setTitle("Enchantment Shop");
+						$form->addLabel("You don't have enough money to buy that!");
+					}else{
+						$form = $formsAPI->createModalForm(function(Player $player, $data) {
+							if($data) {
+								$dataStore = Main::getFromDataStore($player);
+								$enchantment = CustomEnchants::getEnchantment($dataStore[0]);
+								if($enchantment !== null) {
+									$inventory = $player->getInventory();
+									$item = $inventory->getItemInHand();
+									$item->addEnchantment(new EnchantmentInstance($enchantment, $dataStore[1]));
+									$inventory->setItemInHand($item);
+									$inventory->sendHeldItem($inventory->getHolder()->getLevel()->getPlayers());
+									$inventory->sendContents($inventory->getHolder());
+									$economy = EconomyAPI::getInstance();
+									$economy->reduceMoney($player, $dataStore[2], false, "EnchantmentShop");
+									$player->sendMessage(TextFormat::GREEN."Enchantment Purchased!");
+								}else{
+									$player->sendMessage(TextFormat::RED."There was an error! That enchantment doesn't exist!");
+								}
+							}
+						});
+						$form->setTitle("Enchantment Shop");
+						$form->setContent("Do you accept your charge of " . $economy->getConfig()->get("monetary-unit", "$") . $dataStore[2] . "?");
+						$form->setButton1("Yes, I accept the charge");
+						$form->setButton2("No, I don't want to pay for this");
+					}
+					$form->sendToPlayer($player);
+				});
+				$form->setTitle("Enchantment Shop");
+				$form->addSlider("Enchantment Level", 1, (int) (((int) EconomyAPI::getInstance()->getConfig()->get("max-money", 9999999999)) / 5000000));
+				$form->sendToPlayer($player);
 			});
 			$form->setTitle("Enchantment Shop");
-			$maxLevel = (int) (((int) EconomyAPI::getInstance()->getConfig()->get("max-money", 9999999999)) / 5000000);
-			$form->addSlider("Enchantment Level", 1, $maxLevel);
-		});
-		$form->setTitle("Enchantment Shop");
-		$form->setContent("Choose an enchantment to add to your item");
+			$form->setContent("Choose an enchantment to add to your item");
 
-		/** @noinspection PhpUnhandledExceptionInspection */
-		$class = new \ReflectionClass(CustomEnchants::class);
-		/** @var Enchantment[] $enchantments */
-		$enchantments = $class->getStaticPropertyValue("enchantments", []);
-		foreach($enchantments as $enchantment) {
-			$form->addButton($enchantment->getName());
-		}
-		$this->form = $form;
-	}
-
-	public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool {
-		if($sender instanceof Player) {
-			$this->form->sendToPlayer($sender);
+			foreach($enchantments as $enchantment) {
+				$form->addButton($enchantment->getName());
+			}
+			$form->sendToPlayer($sender);
 		}
 		return true;
+	}
+
+	/**
+	 * @param Player $player
+	 *
+	 * @return array
+	 */
+	public static function createPlayerDataStore(Player $player) : array {
+		static::$dataStore[$player->getName()] = [];
+		return static::$dataStore[$player->getName()];
+	}
+
+	/**
+	 * @param Player $player
+	 *
+	 * @return array
+	 */
+	public static function getFromDataStore(Player $player) : array {
+		return static::$dataStore[$player->getName()];
+	}
+
+	/**
+	 * @param Player $player
+	 * @param array $data
+	 */
+	public static function setToDataStore(Player $player, array $data) : void {
+		static::$dataStore[$player->getName()] = $data;
+	}
+
+	/**
+	 * @param Player $player
+	 */
+	public static function clearFromDataStore(Player $player) : void {
+		unset(static::$dataStore[$player->getName()]);
 	}
 }

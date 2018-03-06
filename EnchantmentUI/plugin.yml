@@ -6,6 +6,8 @@ description: "A commissioned Enchantment Shop plugin"
 author: "jasonwynn10"
 depend:
  - FormAPI
+ - PiggyCustomEnchants
+ - EconomyAPI
 commands:
   enchantmentshop:
     description: "Opens the Enchantment Shop"
