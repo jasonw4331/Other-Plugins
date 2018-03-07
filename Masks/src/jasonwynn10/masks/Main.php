@@ -15,11 +15,16 @@ use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\item\Item;
 use pocketmine\Player;
 use pocketmine\plugin\PluginBase;
+use pocketmine\Server;
 
 class Main extends PluginBase implements Listener {
+	/** @var Main $insance */
+	private static $insance;
+
 	public function onEnable() {
 		$this->saveDefaultConfig();
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
+		self::$insance = $this;
 	}
 
 	/**
@@ -46,7 +51,7 @@ class Main extends PluginBase implements Listener {
 								continue;
 							}
 							foreach($class->getConstants() as $name => $value) {
-								if(strpos(strtolower($setting), str_replace("_", " ", strtolower($name)))) {
+								if(strpos(strtolower($setting), str_replace("_", " ", strtolower($name))) !== false) {
 									if($amplifier > 0) {
 										$entity->addEffect(Effect::getEffect($value)->setDuration(INT32_MAX)->setAmplifier($amplifier));
 									}else {
@@ -56,7 +61,7 @@ class Main extends PluginBase implements Listener {
 								}
 							}
 						}
-					break;
+						break;
 					case 2: //ZOMBIE
 						$settings = $this->getConfig()->getNested("Zombie Mask", []);
 						foreach($settings as $setting => $amplifier) {
@@ -69,7 +74,7 @@ class Main extends PluginBase implements Listener {
 								continue;
 							}
 							foreach($class->getConstants() as $name => $value) {
-								if(strpos(strtolower($setting), str_replace("_", " ", strtolower($name)))) {
+								if(strpos(strtolower($setting), str_replace("_", " ", strtolower($name))) !== false) {
 									if($amplifier > 0) {
 										$entity->addEffect(Effect::getEffect($value)->setDuration(INT32_MAX)->setAmplifier($amplifier));
 									}else {
@@ -79,7 +84,7 @@ class Main extends PluginBase implements Listener {
 								}
 							}
 						}
-					break;
+						break;
 					case 4: //CREEPER
 						$settings = $this->getConfig()->getNested("Creeper Mask", []);
 						foreach($settings as $setting => $amplifier) {
@@ -92,7 +97,7 @@ class Main extends PluginBase implements Listener {
 								continue;
 							}
 							foreach($class->getConstants() as $name => $value) {
-								if(strpos(strtolower($setting), str_replace("_", " ", strtolower($name)))) {
+								if(strpos(strtolower($setting), str_replace("_", " ", strtolower($name))) !== false) {
 									if($amplifier > 0) {
 										$entity->addEffect(Effect::getEffect($value)->setDuration(INT32_MAX)->setAmplifier($amplifier));
 									}else {
@@ -102,7 +107,7 @@ class Main extends PluginBase implements Listener {
 								}
 							}
 						}
-					break;
+						break;
 					case 5: //DRAGON
 						$settings = $this->getConfig()->getNested("Dragon Mask", []);
 						foreach($settings as $setting => $amplifier) {
@@ -115,7 +120,7 @@ class Main extends PluginBase implements Listener {
 								continue;
 							}
 							foreach($class->getConstants() as $name => $value) {
-								if(strpos(strtolower($setting), str_replace("_", " ", strtolower($name)))) {
+								if(strpos(strtolower($setting), str_replace("_", " ", strtolower($name))) !== false) {
 									if($amplifier > 0) {
 										$entity->addEffect(Effect::getEffect($value)->setDuration(INT32_MAX)->setAmplifier($amplifier));
 									}else {
@@ -125,7 +130,7 @@ class Main extends PluginBase implements Listener {
 								}
 							}
 						}
-					break;
+						break;
 					default:
 						$settings = $this->getConfig()->getNested("No Mask", []);
 						foreach($settings as $setting => $amplifier) {
@@ -138,7 +143,7 @@ class Main extends PluginBase implements Listener {
 								continue;
 							}
 							foreach($class->getConstants() as $name => $value) {
-								if(strpos(strtolower($setting), str_replace("_", " ", strtolower($name)))) {
+								if(strpos(strtolower($setting), str_replace("_", " ", strtolower($name))) !== false) {
 									if($amplifier > 0) {
 										$entity->addEffect(Effect::getEffect($value)->setDuration(INT32_MAX)->setAmplifier($amplifier));
 									}else {
@@ -306,5 +311,133 @@ class Main extends PluginBase implements Listener {
 			$form->sendToPlayer($sender);
 		}
 		return true;
+	}
+
+	public static function liveUpdateEffects() {
+		foreach(Server::getInstance()->getOnlinePlayers() as $player) {
+			$player->removeAllEffects();
+			$mask = $player->getArmorInventory()->getHelmet();
+			/** @noinspection PhpUnhandledExceptionInspection */
+			$class = new \ReflectionClass(Effect::class);
+			if($mask->getId() === Item::MOB_HEAD) {
+				switch($mask->getDamage()) {
+					case 0: //SKELETON
+						$settings = self::$insance->getConfig()->getNested("Skeleton Mask", []);
+						foreach($settings as $setting => $amplifier) {
+							if($setting === "Flight") {
+								if($amplifier == true) {
+									$player->setAllowFlight(true);
+								}else {
+									$player->setAllowFlight(false);
+								}
+								continue;
+							}
+							foreach($class->getConstants() as $name => $value) {
+								if(strpos(strtolower($setting), str_replace("_", " ", strtolower($name))) !== false) {
+									if($amplifier > 0) {
+										$player->addEffect(Effect::getEffect($value)->setDuration(INT32_MAX)->setAmplifier($amplifier));
+									}else {
+										$player->removeEffect($value);
+									}
+									break;
+								}
+							}
+						}
+						break;
+					case 2: //ZOMBIE
+						$settings = self::$insance->getConfig()->getNested("Zombie Mask", []);
+						foreach($settings as $setting => $amplifier) {
+							if($setting === "Flight") {
+								if($amplifier == true) {
+									$player->setAllowFlight(true);
+								}else {
+									$player->setAllowFlight(false);
+								}
+								continue;
+							}
+							foreach($class->getConstants() as $name => $value) {
+								if(strpos(strtolower($setting), str_replace("_", " ", strtolower($name))) !== false) {
+									if($amplifier > 0) {
+										$player->addEffect(Effect::getEffect($value)->setDuration(INT32_MAX)->setAmplifier($amplifier));
+									}else {
+										$player->removeEffect($value);
+									}
+									break;
+								}
+							}
+						}
+						break;
+					case 4: //CREEPER
+						$settings = self::$insance->getConfig()->getNested("Creeper Mask", []);
+						foreach($settings as $setting => $amplifier) {
+							if($setting === "Flight") {
+								if($amplifier == true) {
+									$player->setAllowFlight(true);
+								}else {
+									$player->setAllowFlight(false);
+								}
+								continue;
+							}
+							foreach($class->getConstants() as $name => $value) {
+								if(strpos(strtolower($setting), str_replace("_", " ", strtolower($name))) !== false) {
+									if($amplifier > 0) {
+										$player->addEffect(Effect::getEffect($value)->setDuration(INT32_MAX)->setAmplifier($amplifier));
+									}else {
+										$player->removeEffect($value);
+									}
+									break;
+								}
+							}
+						}
+						break;
+					case 5: //DRAGON
+						$settings = self::$insance->getConfig()->getNested("Dragon Mask", []);
+						foreach($settings as $setting => $amplifier) {
+							if($setting === "Flight") {
+								if($amplifier == true) {
+									$player->setAllowFlight(true);
+								}else {
+									$player->setAllowFlight(false);
+								}
+								continue;
+							}
+							foreach($class->getConstants() as $name => $value) {
+								if(strpos(strtolower($setting), str_replace("_", " ", strtolower($name))) !== false) {
+									if($amplifier > 0) {
+										$player->addEffect(Effect::getEffect($value)->setDuration(INT32_MAX)->setAmplifier($amplifier));
+									}else {
+										$player->removeEffect($value);
+									}
+									break;
+								}
+							}
+						}
+						break;
+					default:
+						$settings = self::$insance->getConfig()->getNested("No Mask", []);
+						foreach($settings as $setting => $amplifier) {
+							if($setting === "Flight") {
+								if($amplifier == true) {
+									$player->setAllowFlight(true);
+								}else {
+									$player->setAllowFlight(false);
+								}
+								continue;
+							}
+							foreach($class->getConstants() as $name => $value) {
+								if(strpos(strtolower($setting), str_replace("_", " ", strtolower($name))) !== false) {
+									if($amplifier > 0) {
+										$player->addEffect(Effect::getEffect($value)->setDuration(INT32_MAX)->setAmplifier($amplifier));
+									}else {
+										$player->removeEffect($value);
+									}
+									break;
+								}
+							}
+						}
+						break;
+				}
+			}
+		}
 	}
 }
