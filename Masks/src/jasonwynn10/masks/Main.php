@@ -23,43 +23,131 @@ class Main extends PluginBase implements Listener {
 
 	/**
 	 * @param EntityArmorChangeEvent $event
+	 * @throws \ReflectionException
 	 */
 	public function onMask(EntityArmorChangeEvent $event) {
 		$entity = $event->getEntity();
 		if($entity instanceof Player) {
 			$mask = $event->getNewItem();
+			/** @noinspection PhpUnhandledExceptionInspection */
+			$class = new \ReflectionClass(Effect::class);
 			if($mask->getId() === Item::MOB_HEAD) {
 				switch($mask->getDamage()) {
 					case 0: //SKELETON
-						$entity->addEffect(Effect::getEffect(Effect::HASTE)->setAmplifier(5)->setDuration(INT32_MAX));
-						$entity->addEffect(Effect::getEffect(Effect::STRENGTH)->setAmplifier(5)->setDuration(INT32_MAX));
-						$entity->addEffect(Effect::getEffect(Effect::SPEED)->setAmplifier(4)->setDuration(INT32_MAX));
-						$entity->setAllowFlight(true);
+						$settings = $this->getConfig()->getNested("Skeleton Mask", []);
+						foreach($settings as $setting => $amplifier) {
+							if($setting === "Flight") {
+								if($amplifier == true) {
+									$entity->setAllowFlight(true);
+								}else {
+									$entity->setAllowFlight(false);
+								}
+								continue;
+							}
+							foreach($class->getConstants() as $name => $value) {
+								if(strpos(strtolower($setting), str_replace("_", " ", strtolower($name)))) {
+									if($amplifier > 0) {
+										$entity->addEffect(Effect::getEffect($value)->setDuration(INT32_MAX)->setAmplifier($amplifier));
+									}else {
+										$entity->removeEffect($value);
+									}
+									break;
+								}
+							}
+						}
 					break;
 					case 2: //ZOMBIE
-						$entity->addEffect(Effect::getEffect(Effect::HASTE)->setAmplifier(5)->setDuration(INT32_MAX));
-						$entity->addEffect(Effect::getEffect(Effect::STRENGTH)->setAmplifier(5)->setDuration(INT32_MAX));
-						$entity->addEffect(Effect::getEffect(Effect::SPEED)->setAmplifier(3)->setDuration(INT32_MAX));
-						//TODO: Give poison to the other player level 5 if possible
+						$settings = $this->getConfig()->getNested("Zombie Mask", []);
+						foreach($settings as $setting => $amplifier) {
+							if($setting === "Flight") {
+								if($amplifier == true) {
+									$entity->setAllowFlight(true);
+								}else {
+									$entity->setAllowFlight(false);
+								}
+								continue;
+							}
+							foreach($class->getConstants() as $name => $value) {
+								if(strpos(strtolower($setting), str_replace("_", " ", strtolower($name)))) {
+									if($amplifier > 0) {
+										$entity->addEffect(Effect::getEffect($value)->setDuration(INT32_MAX)->setAmplifier($amplifier));
+									}else {
+										$entity->removeEffect($value);
+									}
+									break;
+								}
+							}
+						}
 					break;
 					case 4: //CREEPER
-						$entity->addEffect(Effect::getEffect(Effect::HASTE)->setAmplifier(5)->setDuration(INT32_MAX));
-						$entity->addEffect(Effect::getEffect(Effect::STRENGTH)->setAmplifier(5)->setDuration(INT32_MAX));
-						$entity->addEffect(Effect::getEffect(Effect::SPEED)->setAmplifier(3)->setDuration(INT32_MAX));
-						$entity->addEffect(Effect::getEffect(Effect::REGENERATION)->setAmplifier(5)->setDuration(INT32_MAX));
-						$entity->setAllowFlight(true);
-						//TODO: Give poison to the Other player level 5 of possible
+						$settings = $this->getConfig()->getNested("Creeper Mask", []);
+						foreach($settings as $setting => $amplifier) {
+							if($setting === "Flight") {
+								if($amplifier == true) {
+									$entity->setAllowFlight(true);
+								}else {
+									$entity->setAllowFlight(false);
+								}
+								continue;
+							}
+							foreach($class->getConstants() as $name => $value) {
+								if(strpos(strtolower($setting), str_replace("_", " ", strtolower($name)))) {
+									if($amplifier > 0) {
+										$entity->addEffect(Effect::getEffect($value)->setDuration(INT32_MAX)->setAmplifier($amplifier));
+									}else {
+										$entity->removeEffect($value);
+									}
+									break;
+								}
+							}
+						}
 					break;
 					case 5: //DRAGON
-						$entity->addEffect(Effect::getEffect(Effect::HASTE)->setAmplifier(5)->setDuration(INT32_MAX));
-						$entity->addEffect(Effect::getEffect(Effect::STRENGTH)->setAmplifier(5)->setDuration(INT32_MAX));
-						$entity->addEffect(Effect::getEffect(Effect::SPEED)->setAmplifier(2)->setDuration(INT32_MAX));
-						$entity->setAllowFlight(true);
+						$settings = $this->getConfig()->getNested("Dragon Mask", []);
+						foreach($settings as $setting => $amplifier) {
+							if($setting === "Flight") {
+								if($amplifier == true) {
+									$entity->setAllowFlight(true);
+								}else {
+									$entity->setAllowFlight(false);
+								}
+								continue;
+							}
+							foreach($class->getConstants() as $name => $value) {
+								if(strpos(strtolower($setting), str_replace("_", " ", strtolower($name)))) {
+									if($amplifier > 0) {
+										$entity->addEffect(Effect::getEffect($value)->setDuration(INT32_MAX)->setAmplifier($amplifier));
+									}else {
+										$entity->removeEffect($value);
+									}
+									break;
+								}
+							}
+						}
 					break;
-					default: // OTHER HEADS
-						$entity->addEffect(Effect::getEffect(Effect::HASTE)->setAmplifier(5)->setDuration(INT32_MAX));
-						$entity->addEffect(Effect::getEffect(Effect::STRENGTH)->setAmplifier(3)->setDuration(INT32_MAX));
-						$entity->addEffect(Effect::getEffect(Effect::SPEED)->setAmplifier(1)->setDuration(INT32_MAX));
+					default:
+						$settings = $this->getConfig()->getNested("No Mask", []);
+						foreach($settings as $setting => $amplifier) {
+							if($setting === "Flight") {
+								if($amplifier == true) {
+									$entity->setAllowFlight(true);
+								}else {
+									$entity->setAllowFlight(false);
+								}
+								continue;
+							}
+							foreach($class->getConstants() as $name => $value) {
+								if(strpos(strtolower($setting), str_replace("_", " ", strtolower($name)))) {
+									if($amplifier > 0) {
+										$entity->addEffect(Effect::getEffect($value)->setDuration(INT32_MAX)->setAmplifier($amplifier));
+									}else {
+										$entity->removeEffect($value);
+									}
+									break;
+								}
+							}
+						}
+						break;
 				}
 			}elseif($event->getOldItem()->getId() === Item::MOB_HEAD) {
 				$entity->removeAllEffects();
@@ -77,8 +165,44 @@ class Main extends PluginBase implements Listener {
 			$damaged = $event->getEntity();
 			if($damager instanceof Player and $damaged instanceof Living) {
 				$mask = $damager->getArmorInventory()->getHelmet();
-				if($mask->getId() === Item::MOB_HEAD and ($mask->getDamage() === 2 or $mask->getDamage() === 4)) {
-					$damaged->addEffect(Effect::getEffect(Effect::POISON)->setAmplifier(5)->setDuration(20*5));
+				if($mask->getId() === Item::MOB_HEAD) {
+					switch($mask->getDamage()) {
+						case 0: //SKELETON
+							$settings = $this->getConfig()->getNested("Skeleton Mask", []);
+							if($settings["Poison Attacks"] > 0) {
+								$damaged->addEffect(Effect::getEffect(Effect::POISON)->setDuration(INT32_MAX)->setAmplifier($settings["Poison Attacks"]));
+							}
+							break;
+						case 2: //ZOMBIE
+							$settings = $this->getConfig()->getNested("Zombie Mask", []);
+							if($settings["Poison Attacks"] > 0) {
+								$damaged->addEffect(Effect::getEffect(Effect::POISON)->setDuration(INT32_MAX)->setAmplifier($settings["Poison Attacks"]));
+							}
+							break;
+						case 4: //CREEPER
+							$settings = $this->getConfig()->getNested("Creeper Mask", []);
+							if($settings["Poison Attacks"] > 0) {
+								$damaged->addEffect(Effect::getEffect(Effect::POISON)->setDuration(INT32_MAX)->setAmplifier($settings["Poison Attacks"]));
+							}
+							break;
+						case 5: //DRAGON
+							$settings = $this->getConfig()->getNested("Dragon Mask", []);
+							if($settings["Poison Attacks"] > 0) {
+								$damaged->addEffect(Effect::getEffect(Effect::POISON)->setDuration(INT32_MAX)->setAmplifier($settings["Poison Attacks"]));
+							}
+							break;
+						default:
+							$settings = $this->getConfig()->getNested("No Mask", []);
+							if($settings["Poison Attacks"] > 0) {
+								$damaged->addEffect(Effect::getEffect(Effect::POISON)->setDuration(INT32_MAX)->setAmplifier($settings["Poison Attacks"]));
+							}
+							break;
+					}
+				}elseif($mask->getId() === Item::AIR) {
+					$settings = $this->getConfig()->getNested("No Mask", []);
+					if($settings["Poison Attacks"] > 0) {
+						$damaged->addEffect(Effect::getEffect(Effect::POISON)->setDuration(INT32_MAX)->setAmplifier($settings["Poison Attacks"]));
+					}
 				}
 			}
 		}
@@ -89,10 +213,17 @@ class Main extends PluginBase implements Listener {
 			$player = $event->getPlayer();
 			$inventory = $player->getInventory();
 			$rand = mt_rand(1, 100);
-			if($rand) {
-				//
-			}else{
-				//
+			$item = Item::get(Item::MOB_HEAD);
+			if($rand <= 20) {
+				$inventory->setItemInHand($item->setDamage(0));
+			}elseif($rand > 20 and $rand <= 40) {
+				$inventory->setItemInHand($item->setDamage(2));
+			}elseif($rand > 40 and $rand <= 60) {
+				$inventory->setItemInHand($item->setDamage(4));
+			}elseif($rand > 60 and $rand <= 80) {
+				$inventory->setItemInHand($item->setDamage(5));
+			}elseif($rand > 80 and $rand <= 100) {
+				$inventory->setItemInHand($item->setDamage(mt_rand(0, 6))); // TODO: make better
 			}
 		}
 	}
@@ -102,17 +233,21 @@ class Main extends PluginBase implements Listener {
 			/** @var FormAPI $formsAPI */
 			$formsAPI = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
 			$form = $formsAPI->createCustomForm(function(Player $player, $data) {
-				//
+				var_dump($data);
 			});
 			$form->setTitle("Mask Settings");
-			$form->addLabel("Zombie Mask Settings");
 
-			$this->getConfig()->getNested("");
-
-			$class = new \ReflectionClass(Effect::class);
-			foreach($class->getConstants() as $name => $id) {
-				$form->addToggle(ucwords($name)." Effect");
+			foreach($this->getConfig()->getAll() as $mask => $settings) {
+				$form->addLabel($mask . " Settings");
+				foreach($settings as $setting => $value) {
+					if($setting === "Flight") {
+						$form->addToggle($setting, $value);
+					}else {
+						$form->addSlider($setting, 0, 100, -1, $value);
+					}
+				}
 			}
 		}
+		return true;
 	}
 }

@@ -1,6 +1,105 @@
 Zombie Mask:
-  Speed:
-  Slowness:
-  Haste:
-  Fatigue:
-  Strength:
+  Speed: 3
+  Slowness: 0
+  Haste: 5
+  Fatigue: 0
+  Strength: 5
+  Jump: 0
+  Nausea: 0
+  Regeneration: 0
+  Resistance: 0
+  Fire Resistance: 0
+  Water Breathing: 0
+  Invisibility: 0
+  Blindness: 0
+  Night Vision: 0
+  Weakness: 0
+  Poison: 0
+  Wither: 0
+  Health Boost: 0
+  Flight: 0
+  Poison Attacks: 0
+Skeleton Mask:
+  Speed: 4
+  Slowness: 0
+  Haste: 5
+  Fatigue: 0
+  Strength: 5
+  Jump: 0
+  Nausea: 0
+  Regeneration: 0
+  Resistance: 0
+  Fire Resistance: 0
+  Water Breathing: 0
+  Invisibility: 0
+  Blindness: 0
+  Night Vision: 0
+  Weakness: 0
+  Poison: 0
+  Wither: 0
+  Health Boost: 0
+  Flight: 0
+  Poison Attacks: 0
+Creeper Mask:
+  Speed: 3
+  Slowness: 0
+  Haste: 5
+  Fatigue: 0
+  Strength: 5
+  Jump: 0
+  Nausea: 0
+  Regeneration: 5
+  Resistance: 0
+  Fire Resistance: 0
+  Water Breathing: 0
+  Invisibility: 0
+  Blindness: 0
+  Night Vision: 0
+  Weakness: 0
+  Poison: 0
+  Wither: 0
+  Health Boost: 0
+  Flight: 0
+  Poison Attacks: 0
+Dragon Mask:
+  Speed: 3
+  Slowness: 0
+  Haste: 5
+  Fatigue: 0
+  Strength: 5
+  Jump: 0
+  Nausea: 0
+  Regeneration: 0
+  Resistance: 0
+  Fire Resistance: 0
+  Water Breathing: 0
+  Invisibility: 0
+  Blindness: 0
+  Night Vision: 0
+  Weakness: 0
+  Poison: 0
+  Wither: 0
+  Health Boost: 0
+  Flight: 0
+  Poison Attacks: 0
+No Mask:
+  Speed: 3
+  Slowness: 0
+  Haste: 5
+  Fatigue: 0
+  Strength: 5
+  Jump: 0
+  Nausea: 0
+  Regeneration: 0
+  Resistance: 0
+  Fire Resistance: 0
+  Water Breathing: 0
+  Invisibility: 0
+  Blindness: 0
+  Night Vision: 0
+  Weakness: 0
+  Poison: 0
+  Wither: 0
+  Health Boost: 0
+  Flight: 0
+  Poison Attacks: 0
