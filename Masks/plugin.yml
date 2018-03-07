@@ -1,0 +1,17 @@
+name: Masks
+main: jasonwynn10\masks\Main
+version: 0.1.0
+api: 3.0.0-ALPHA11
+description: "A commissioned mask effects plugin"
+author: "jasonwynn10"
+depend:
+ - FormAPI
+commands:
+  masksetup:
+    description: "Opens the mask settings GUI"
+    usage: "/masksetup"
+    permission: "maskSetup"
+permissions:
+  maskSetup:
+    default: op
+    description: ""
