@@ -18,6 +18,7 @@ use pocketmine\plugin\PluginBase;
 
 class Main extends PluginBase implements Listener {
 	public function onEnable() {
+		$this->saveDefaultConfig();
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 	}
 
@@ -209,7 +210,7 @@ class Main extends PluginBase implements Listener {
 	}
 
 	public function onTap(PlayerInteractEvent $event) {
-		if($event->getAction() === $event::LEFT_CLICK_BLOCK and $event->getItem()->getId() === Item::BOOK) {
+		if($event->getItem()->getId() === Item::BOOK) {
 			$player = $event->getPlayer();
 			$inventory = $player->getInventory();
 			$rand = mt_rand(1, 100);
@@ -225,28 +226,84 @@ class Main extends PluginBase implements Listener {
 			}elseif($rand > 80 and $rand <= 100) {
 				$inventory->setItemInHand($item->setDamage(mt_rand(0, 6))); // TODO: make better
 			}
+			$inventory->sendHeldItem($inventory->getHolder()->getLevel()->getPlayers());
+			$inventory->sendContents($inventory->getHolder());
 		}
 	}
 
+	/**
+	 * @param CommandSender $sender
+	 * @param Command $command
+	 * @param string $label
+	 * @param array $args
+	 * @return bool
+	 */
 	public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool {
 		if($sender instanceof Player) {
+			$config = $this->getConfig();
 			/** @var FormAPI $formsAPI */
 			$formsAPI = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
-			$form = $formsAPI->createCustomForm(function(Player $player, $data) {
-				var_dump($data);
+			$form = $formsAPI->createCustomForm(function(Player $player, $data) use ($config) {
+				if(empty($data)) {
+					return;
+				}
+				$settingsArray = array_chunk($data, 21);
+				$endSettings = [];
+				foreach($settingsArray as $key => $settings) {
+					switch($key) {
+						case 0:
+							$mask = "Zombie Mask";
+							break;
+						case 1:
+							$mask = "Skeleton Mask";
+							break;
+						case 2:
+							$mask = "Creeper Mask";
+							break;
+						case 3:
+							$mask = "Dragon Mask";
+							break;
+						default:
+							$mask = "No mask";
+							break;
+					}
+					$endSettings[$mask]["Speed"] = (int) $settings[1];
+					$endSettings[$mask]["Slowness"] = (int) $settings[2];
+					$endSettings[$mask]["Haste"] = (int) $settings[3];
+					$endSettings[$mask]["Fatigue"] = (int) $settings[4];
+					$endSettings[$mask]["Strength"] = (int) $settings[5];
+					$endSettings[$mask]["Jump"] = (int) $settings[6];
+					$endSettings[$mask]["Nausea"] = (int) $settings[7];
+					$endSettings[$mask]["Regeneration"] = (int) $settings[8];
+					$endSettings[$mask]["Resistance"] = (int) $settings[9];
+					$endSettings[$mask]["Fire Resistance"] = (int) $settings[10];
+					$endSettings[$mask]["Water Breathing"] = (int) $settings[11];
+					$endSettings[$mask]["Invisibility"] = (int) $settings[12];
+					$endSettings[$mask]["Blindness"] = (int) $settings[13];
+					$endSettings[$mask]["Night Vision"] = (int) $settings[14];
+					$endSettings[$mask]["Weakness"] = (int) $settings[15];
+					$endSettings[$mask]["Poison"] = (int) $settings[16];
+					$endSettings[$mask]["Wither"] = (int) $settings[17];
+					$endSettings[$mask]["Health Boost"] = (int) $settings[18];
+					$endSettings[$mask]["Flight"] = (bool) $settings[19];
+					$endSettings[$mask]["Poison Attacks"] = (int) $settings[20];
+				}
+				$config->setAll($endSettings);
+				$config->save();
 			});
 			$form->setTitle("Mask Settings");
 
-			foreach($this->getConfig()->getAll() as $mask => $settings) {
+			foreach($config->getAll() as $mask => $settings) {
 				$form->addLabel($mask . " Settings");
 				foreach($settings as $setting => $value) {
 					if($setting === "Flight") {
-						$form->addToggle($setting, $value);
+						$form->addToggle($setting, (bool) $value);
 					}else {
 						$form->addSlider($setting, 0, 100, -1, $value);
 					}
 				}
 			}
+			$form->sendToPlayer($sender);
 		}
 		return true;
 	}

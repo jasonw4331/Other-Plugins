@@ -17,7 +17,7 @@ Zombie Mask:
   Poison: 0
   Wither: 0
   Health Boost: 0
-  Flight: 0
+  Flight: false
   Poison Attacks: 0
 Skeleton Mask:
   Speed: 4
@@ -38,7 +38,7 @@ Skeleton Mask:
   Poison: 0
   Wither: 0
   Health Boost: 0
-  Flight: 0
+  Flight: true
   Poison Attacks: 0
 Creeper Mask:
   Speed: 3
@@ -59,7 +59,7 @@ Creeper Mask:
   Poison: 0
   Wither: 0
   Health Boost: 0
-  Flight: 0
+  Flight: true
   Poison Attacks: 0
 Dragon Mask:
   Speed: 3
@@ -80,7 +80,7 @@ Dragon Mask:
   Poison: 0
   Wither: 0
   Health Boost: 0
-  Flight: 0
+  Flight: true
   Poison Attacks: 0
 No Mask:
   Speed: 3
@@ -101,5 +101,5 @@ No Mask:
   Poison: 0
   Wither: 0
   Health Boost: 0
-  Flight: 0
+  Flight: true
   Poison Attacks: 0
