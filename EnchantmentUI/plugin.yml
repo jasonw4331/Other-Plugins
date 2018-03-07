@@ -12,8 +12,8 @@ commands:
   enchantmentshop:
     description: "Opens the Enchantment Shop"
     permission: "enchantmentshop.cmd"
-    usage: "/enchshop"
-    alias: ["enchshop"]
+    usage: "/enchantmentshop"
+    aliases: ["enchshop", "enchantshop"]
 permissions:
   enchantmentshop.cmd:
     default: true
